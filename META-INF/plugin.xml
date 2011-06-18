@@ -1,0 +1,32 @@
+<idea-plugin version="2">
+    <name>PHPUnit code coverage</name>
+    <description>Displays PHPUnit code coverage of file in the editor.</description>
+    <version>0.0.1</version>
+    <vendor>Zsolt Takacs</vendor>
+    <idea-version since-build="8000"/>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <application-components>
+    </application-components>
+
+    <project-components>
+        <component>
+            <implementation-class>cc.takacs.php_codeverage_display.ProjectPlugin</implementation-class>
+            <interface-class>cc.takacs.php_codeverage_display.ProjectPlugin</interface-class>
+            <option name="workspace" value="true"/>
+        </component>
+        <component>
+            <implementation-class>cc.takacs.php_codeverage_display.config.PluginConfiguration</implementation-class>
+            <interface-class>cc.takacs.php_codeverage_display.config.PluginConfiguration</interface-class>
+            <option name="workspace" value="true"/>
+        </component>
+    </project-components>
+
+    <actions>
+    </actions>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <applicationConfigurable implementation="cc.takacs.php_codeverage_display.config.PluginConfiguration" />
+    </extensions>
+</idea-plugin>
