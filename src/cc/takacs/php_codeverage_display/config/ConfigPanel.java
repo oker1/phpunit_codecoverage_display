@@ -5,6 +5,7 @@ import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory;
 import com.intellij.openapi.vfs.VirtualFile;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -15,6 +16,10 @@ public class ConfigPanel {
     public JPanel panel;
     private JButton browseCloverXmlButton;
     public JTextField cloverLocation;
+    private JButton pickUncovered;
+    private JButton pickCovered;
+    public JPanel coveredColor;
+    public JPanel uncoveredColor;
 
     public ConfigPanel()
     {
@@ -25,6 +30,18 @@ public class ConfigPanel {
                 VirtualFile[] files = FileChooser.chooseFiles(panel, FileChooserDescriptorFactory.createSingleFileNoJarsDescriptor());
 
                 ConfigPanel.this.cloverLocation.setText(files[0].getPath());
+            }
+        });
+        pickCovered.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent actionEvent) {
+                Color picked = JColorChooser.showDialog(ConfigPanel.this.panel, "String", ConfigPanel.this.coveredColor.getBackground());
+                ConfigPanel.this.coveredColor.setBackground(picked);
+            }
+        });
+        pickUncovered.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent actionEvent) {
+                Color picked = JColorChooser.showDialog(ConfigPanel.this.panel, "String", ConfigPanel.this.uncoveredColor.getBackground());
+                ConfigPanel.this.uncoveredColor.setBackground(picked);
             }
         });
     }

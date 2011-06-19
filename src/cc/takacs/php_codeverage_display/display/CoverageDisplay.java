@@ -1,6 +1,7 @@
 package cc.takacs.php_codeverage_display.display;
 
 import cc.takacs.php_codeverage_display.clover.FileCoverage;
+import cc.takacs.php_codeverage_display.config.ConfigValues;
 import com.intellij.openapi.editor.Document;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.editor.event.DocumentEvent;
@@ -43,14 +44,11 @@ public class CoverageDisplay implements DocumentListener {
         
         Document document = this.editor.getDocument();
 
-        Color green = new Color(0, 255, 0);
-        Color red = new Color(255, 0, 0);
-
         for (int line : fileCoverage.getCoveredLines()) {
-            highlightLine(document, green, line);
+            highlightLine(document, ConfigValues.getInstance().getCoveredColor(), line);
         }
         for (int line : fileCoverage.getUncoveredLines()) {
-            highlightLine(document, red, line);
+            highlightLine(document, ConfigValues.getInstance().getUncoveredColor(), line);
         }
     }
 

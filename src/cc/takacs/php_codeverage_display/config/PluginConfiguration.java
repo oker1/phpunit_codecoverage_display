@@ -16,7 +16,6 @@ public class PluginConfiguration implements Configurable, PersistentStateCompone
     private ConfigPanel configPanel;
 
     public PluginConfiguration() {
-        configPanel = new ConfigPanel();
     }
 
     public ConfigValues getState() {
@@ -33,23 +32,35 @@ public class PluginConfiguration implements Configurable, PersistentStateCompone
     }
 
     public JComponent createComponent() {
+        configPanel = new ConfigPanel();
+
         return configPanel.panel;
     }
 
     public boolean isModified() {
-        return !configPanel.cloverLocation.getText().equals(ConfigValues.getInstance().cloverXmlPath);
+        ConfigValues configValues = ConfigValues.getInstance();
+        return
+            !configPanel.cloverLocation.getText().equals(configValues.cloverXmlPath) ||
+            !configValues.getCoveredColor().equals(configPanel.coveredColor.getBackground()) ||
+            !configValues.getUncoveredColor().equals(configPanel.uncoveredColor.getBackground());
     }
 
     public void apply() throws ConfigurationException {
-        ConfigValues.getInstance().setCloverXmlPath(configPanel.cloverLocation.getText());
+        ConfigValues configValues = ConfigValues.getInstance();
+
+        configValues.setCloverXmlPath(configPanel.cloverLocation.getText());
+        configValues.setCoveredColor(configPanel.coveredColor.getBackground());
+        configValues.setUncoveredColor(configPanel.uncoveredColor.getBackground());
     }
 
     public void reset() {
-        configPanel.cloverLocation.setText(ConfigValues.getInstance().cloverXmlPath);
+        ConfigValues configValues = ConfigValues.getInstance();
+        configPanel.cloverLocation.setText(configValues.cloverXmlPath);
+        configPanel.coveredColor.setBackground(configValues.getCoveredColor());
+        configPanel.uncoveredColor.setBackground(configValues.getUncoveredColor());
     }
 
     public void disposeUIResources() {
-
     }
 
     public Icon getIcon() {
