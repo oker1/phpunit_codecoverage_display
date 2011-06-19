@@ -3,7 +3,7 @@
     <description>Displays PHPUnit code coverage of file in the editor.</description>
     <version>0.0.1</version>
     <vendor>Zsolt Takacs</vendor>
-    <idea-version since-build="8000"/>
+    <idea-version since-build="107224"/>
 
     <depends>com.intellij.modules.platform</depends>
 
@@ -25,8 +25,4 @@
 
     <actions>
     </actions>
-
-    <extensions defaultExtensionNs="com.intellij">
-        <applicationConfigurable implementation="cc.takacs.php_codeverage_display.config.PluginConfiguration" />
-    </extensions>
 </idea-plugin>
