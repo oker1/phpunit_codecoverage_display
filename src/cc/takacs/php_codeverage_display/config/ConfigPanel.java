@@ -29,19 +29,27 @@ public class ConfigPanel {
 
                 VirtualFile[] files = FileChooser.chooseFiles(panel, FileChooserDescriptorFactory.createSingleFileNoJarsDescriptor());
 
-                ConfigPanel.this.cloverLocation.setText(files[0].getPath());
+                if (files.length > 0) {
+                    ConfigPanel.this.cloverLocation.setText(files[0].getPath());
+                }
             }
         });
         pickCovered.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent actionEvent) {
                 Color picked = JColorChooser.showDialog(ConfigPanel.this.panel, "String", ConfigPanel.this.coveredColor.getBackground());
-                ConfigPanel.this.coveredColor.setBackground(picked);
+
+                if (picked != null) {
+                    ConfigPanel.this.coveredColor.setBackground(picked);
+                }
             }
         });
         pickUncovered.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent actionEvent) {
                 Color picked = JColorChooser.showDialog(ConfigPanel.this.panel, "String", ConfigPanel.this.uncoveredColor.getBackground());
-                ConfigPanel.this.uncoveredColor.setBackground(picked);
+
+                if (picked != null) {
+                    ConfigPanel.this.uncoveredColor.setBackground(picked);
+                }
             }
         });
     }
