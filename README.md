@@ -5,6 +5,9 @@ License: GPLv3
 
 ## Changelog:
 
+### v0.0.4
+ * lower required Idea platform version to 107.120 (#4)
+
 ### v0.0.3
  * file selector nullpointer bugfix (#3)
 
