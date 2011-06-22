@@ -4,3 +4,4 @@ out
 coverage.i*
 /*.zip
 /*.jar
+/.idea
