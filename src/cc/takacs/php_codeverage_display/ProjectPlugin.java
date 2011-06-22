@@ -1,6 +1,7 @@
 package cc.takacs.php_codeverage_display;
 
 import cc.takacs.php_codeverage_display.display.DisplayHandler;
+import cc.takacs.php_codeverage_display.display.FilenameDisplayMap;
 import cc.takacs.php_codeverage_display.listener.EditorManagerListener;
 import cc.takacs.php_codeverage_display.listener.ExecListener;
 import com.intellij.execution.ExecutionManager;

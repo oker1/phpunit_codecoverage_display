@@ -1,6 +1,5 @@
 package cc.takacs.php_codeverage_display.display;
 
-import cc.takacs.php_codeverage_display.FilenameDisplayMap;
 import cc.takacs.php_codeverage_display.clover.CloverXmlReader;
 import cc.takacs.php_codeverage_display.clover.CoverageCollection;
 import cc.takacs.php_codeverage_display.clover.FileCoverage;
