@@ -24,7 +24,7 @@ public class EditorManagerListener implements FileEditorManagerListener {
                 break;
             }
         }
-        
+
         if (editor != null) {
             this.displayHandler.addDisplayForEditor(editor, file.getPath());
         }

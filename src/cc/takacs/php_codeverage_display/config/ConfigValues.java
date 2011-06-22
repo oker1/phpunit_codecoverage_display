@@ -40,26 +40,22 @@ public class ConfigValues {
     }
 
     @Transient
-    public Color getCoveredColor()
-    {
+    public Color getCoveredColor() {
         return new Color(coveredR, coveredG, coveredB);
     }
 
-    public void setCoveredColor(Color color)
-    {
+    public void setCoveredColor(Color color) {
         coveredR = color.getRed();
         coveredG = color.getGreen();
         coveredB = color.getBlue();
     }
 
     @Transient
-    public Color getUncoveredColor()
-    {
+    public Color getUncoveredColor() {
         return new Color(uncoveredR, uncoveredG, uncoveredB);
     }
 
-    public void setUncoveredColor(Color color)
-    {
+    public void setUncoveredColor(Color color) {
         uncoveredR = color.getRed();
         uncoveredG = color.getGreen();
         uncoveredB = color.getBlue();

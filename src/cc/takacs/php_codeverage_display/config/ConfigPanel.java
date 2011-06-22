@@ -21,8 +21,7 @@ public class ConfigPanel {
     public JPanel coveredColor;
     public JPanel uncoveredColor;
 
-    public ConfigPanel()
-    {
+    public ConfigPanel() {
         browseCloverXmlButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent actionEvent) {
                 JPanel panel = ConfigPanel.this.panel;

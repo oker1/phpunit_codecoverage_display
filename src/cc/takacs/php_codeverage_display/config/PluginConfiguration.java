@@ -11,7 +11,7 @@ import javax.swing.*;
 /**
  * @author Zsolt Takacs <zsolt@takacs.cc>
  */
-@State(name="PHPUnitCoveragePlugin", storages={@com.intellij.openapi.components.Storage(id="config", file="$WORKSPACE_FILE$")})
+@State(name = "PHPUnitCoveragePlugin", storages = {@com.intellij.openapi.components.Storage(id = "config", file = "$WORKSPACE_FILE$")})
 public class PluginConfiguration implements Configurable, PersistentStateComponent<ConfigValues> {
     private ConfigPanel configPanel;
 
@@ -40,9 +40,9 @@ public class PluginConfiguration implements Configurable, PersistentStateCompone
     public boolean isModified() {
         ConfigValues configValues = ConfigValues.getInstance();
         return
-            !configPanel.cloverLocation.getText().equals(configValues.cloverXmlPath) ||
-            !configValues.getCoveredColor().equals(configPanel.coveredColor.getBackground()) ||
-            !configValues.getUncoveredColor().equals(configPanel.uncoveredColor.getBackground());
+                !configPanel.cloverLocation.getText().equals(configValues.cloverXmlPath) ||
+                        !configValues.getCoveredColor().equals(configPanel.coveredColor.getBackground()) ||
+                        !configValues.getUncoveredColor().equals(configPanel.uncoveredColor.getBackground());
     }
 
     public void apply() throws ConfigurationException {

@@ -21,7 +21,7 @@ public class CoverageDisplay implements DocumentListener {
     private Editor editor;
     private FileCoverage fileCoverage;
     private ArrayList<RangeHighlighter> highlights;
-    
+
     public CoverageDisplay(Editor editor) {
         this.editor = editor;
         fileCoverage = new FileCoverage();
@@ -31,7 +31,7 @@ public class CoverageDisplay implements DocumentListener {
     public void setFileCoverage(FileCoverage fileCoverage) {
         this.fileCoverage = fileCoverage;
     }
-    
+
     public void beforeDocumentChange(DocumentEvent event) {
     }
 
@@ -40,7 +40,7 @@ public class CoverageDisplay implements DocumentListener {
 
     public synchronized void redraw() {
         clear();
-        
+
         Document document = this.editor.getDocument();
 
         for (int line : fileCoverage.getCoveredLines()) {
@@ -67,8 +67,7 @@ public class CoverageDisplay implements DocumentListener {
         }
     }
 
-    public void clear()
-    {
+    public void clear() {
         MarkupModel model = editor.getMarkupModel();
 
         for (RangeHighlighter rangeHighlighter : highlights) {

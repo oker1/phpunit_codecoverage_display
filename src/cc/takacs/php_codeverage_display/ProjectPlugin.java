@@ -13,8 +13,7 @@ import com.intellij.util.messages.MessageBusConnection;
 public class ProjectPlugin {
     private Project project;
 
-    public ProjectPlugin(Project project)
-    {
+    public ProjectPlugin(Project project) {
         this.project = project;
 
         DisplayHandler displayHandler = new DisplayHandler(new FilenameDisplayMap());

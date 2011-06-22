@@ -21,19 +21,19 @@ public class DisplayHandler {
 
     public void updateDisplays() {
         CloverXmlReader reader = new CloverXmlReader(getCloverXmlPath());
-            CoverageCollection fileCoverages = reader.parse();
+        CoverageCollection fileCoverages = reader.parse();
 
-            for (String filename : fileCoverages.getKeys()) {
-                FileCoverage fileCoverage = fileCoverages.get(filename);
+        for (String filename : fileCoverages.getKeys()) {
+            FileCoverage fileCoverage = fileCoverages.get(filename);
 
-                CoverageDisplay display = map.get(filename);
+            CoverageDisplay display = map.get(filename);
 
-                if (display != null) {
-                    display.setFileCoverage(fileCoverage);
+            if (display != null) {
+                display.setFileCoverage(fileCoverage);
 
-                    SwingUtilities.invokeLater(new DisplayDrawerThread(display));
-                }
+                SwingUtilities.invokeLater(new DisplayDrawerThread(display));
             }
+        }
     }
 
     private String getCloverXmlPath() {
@@ -44,7 +44,7 @@ public class DisplayHandler {
         CoverageDisplay display = new CoverageDisplay(editor);
 
         editor.getDocument().addDocumentListener(display);
-        
+
         this.map.add(file, display);
     }
 

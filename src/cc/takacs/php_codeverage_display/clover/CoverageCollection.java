@@ -9,18 +9,15 @@ import java.util.Set;
 public class CoverageCollection {
     private HashMap<String, FileCoverage> files;
 
-    public CoverageCollection()
-    {
+    public CoverageCollection() {
         files = new HashMap<String, FileCoverage>();
     }
 
-    public void add(String filename, FileCoverage coverage)
-    {
+    public void add(String filename, FileCoverage coverage) {
         files.put(filename, coverage);
     }
 
-    public FileCoverage get(String filename)
-    {
+    public FileCoverage get(String filename) {
         return files.get(filename);
     }
 
