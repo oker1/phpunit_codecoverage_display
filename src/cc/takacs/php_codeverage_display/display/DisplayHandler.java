@@ -14,8 +14,8 @@ import javax.swing.*;
 public class DisplayHandler {
     private FilenameDisplayMap map;
 
-    public DisplayHandler(FilenameDisplayMap map) {
-        this.map = map;
+    public DisplayHandler() {
+        this.map = new FilenameDisplayMap();
     }
 
     public void updateDisplays() {

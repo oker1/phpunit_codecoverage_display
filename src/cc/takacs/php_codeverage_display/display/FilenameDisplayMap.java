@@ -1,7 +1,5 @@
 package cc.takacs.php_codeverage_display.display;
 
-import cc.takacs.php_codeverage_display.display.CoverageDisplay;
-
 import java.util.HashMap;
 
 /**

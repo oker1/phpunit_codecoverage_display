@@ -1,7 +1,6 @@
 package cc.takacs.php_codeverage_display;
 
 import cc.takacs.php_codeverage_display.display.DisplayHandler;
-import cc.takacs.php_codeverage_display.display.FilenameDisplayMap;
 import cc.takacs.php_codeverage_display.listener.EditorManagerListener;
 import cc.takacs.php_codeverage_display.listener.ExecListener;
 import com.intellij.execution.ExecutionManager;
@@ -14,10 +13,11 @@ import com.intellij.util.messages.MessageBusConnection;
 public class ProjectPlugin {
     private Project project;
 
-    public ProjectPlugin(Project project) {
-        this.project = project;
+    public DisplayHandler displayHandler;
 
-        DisplayHandler displayHandler = new DisplayHandler(new FilenameDisplayMap());
+    public ProjectPlugin(Project project, DisplayHandler displayHandler) {
+        this.project = project;
+        this.displayHandler = displayHandler;
 
         registerListeners(displayHandler);
     }
