@@ -1,7 +1,6 @@
 package cc.takacs.php_codeverage_display.listener;
 
-import cc.takacs.php_codeverage_display.FilenameDisplayMap;
-import cc.takacs.php_codeverage_display.display.CoverageDisplay;
+import cc.takacs.php_codeverage_display.display.DisplayHandler;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.fileEditor.*;
 import com.intellij.openapi.vfs.VirtualFile;
@@ -10,10 +9,10 @@ import com.intellij.openapi.vfs.VirtualFile;
  * @author Zsolt Takacs <zsolt@takacs.cc>
  */
 public class EditorManagerListener implements FileEditorManagerListener {
-    private FilenameDisplayMap map;
+    private DisplayHandler displayHandler;
 
-    public EditorManagerListener(FilenameDisplayMap map) {
-        this.map = map;
+    public EditorManagerListener(DisplayHandler displayHandler) {
+        this.displayHandler = displayHandler;
     }
 
     public void fileOpened(FileEditorManager source, VirtualFile file) {
@@ -27,15 +26,12 @@ public class EditorManagerListener implements FileEditorManagerListener {
         }
         
         if (editor != null) {
-            CoverageDisplay display = new CoverageDisplay(editor);
-
-            editor.getDocument().addDocumentListener(display);
-            this.map.add(file.getPath(), display);
+            this.displayHandler.addDisplayForEditor(editor, file.getPath());
         }
     }
 
     public void fileClosed(FileEditorManager source, VirtualFile file) {
-        this.map.remove(file.getPath());
+        this.displayHandler.removeDisplayForFile(file.getPath());
     }
 
     public void selectionChanged(FileEditorManagerEvent event) {

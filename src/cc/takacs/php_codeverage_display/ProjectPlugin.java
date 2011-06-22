@@ -1,9 +1,9 @@
 package cc.takacs.php_codeverage_display;
 
+import cc.takacs.php_codeverage_display.display.DisplayHandler;
 import cc.takacs.php_codeverage_display.listener.EditorManagerListener;
 import cc.takacs.php_codeverage_display.listener.ExecListener;
 import com.intellij.execution.ExecutionManager;
-import com.intellij.openapi.fileEditor.FileEditorManager;
 import com.intellij.openapi.project.Project;
 import com.intellij.util.messages.MessageBusConnection;
 
@@ -15,18 +15,17 @@ public class ProjectPlugin {
 
     public ProjectPlugin(Project project)
     {
-        FilenameDisplayMap map = new FilenameDisplayMap();
         this.project = project;
 
-        registerListeners(map);
+        DisplayHandler displayHandler = new DisplayHandler(new FilenameDisplayMap());
+
+        registerListeners(displayHandler);
     }
 
-    private void registerListeners(FilenameDisplayMap map) {
-        FileEditorManager.getInstance(this.project).addFileEditorManagerListener(new EditorManagerListener(map));
-
-        //VirtualFileManager.getInstance().addVirtualFileListener(new CloverXmlListener());
-
+    private void registerListeners(DisplayHandler displayHandler) {
         final MessageBusConnection connect = this.project.getMessageBus().connect(this.project);
-        connect.subscribe(ExecutionManager.EXECUTION_TOPIC, new ExecListener(map));
+
+        connect.subscribe(ExecutionManager.EXECUTION_TOPIC, new ExecListener(displayHandler));
+        connect.subscribe(EditorManagerListener.FILE_EDITOR_MANAGER, new EditorManagerListener(displayHandler));
     }
 }

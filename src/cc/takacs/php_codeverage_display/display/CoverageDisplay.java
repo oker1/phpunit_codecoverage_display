@@ -36,7 +36,6 @@ public class CoverageDisplay implements DocumentListener {
     }
 
     public void documentChanged(DocumentEvent event) {
-        redraw();
     }
 
     public synchronized void redraw() {
