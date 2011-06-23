@@ -5,6 +5,10 @@ License: GPLv3
 
 ## Changelog:
 
+### v0.0.5
+ * remove highlights on first edit (#6)
+ * redraw highlights on config changes
+
 ### v0.0.4
  * lower required Idea platform version to 107.120 (#4)
 
