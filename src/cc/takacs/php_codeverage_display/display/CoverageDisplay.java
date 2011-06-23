@@ -33,6 +33,7 @@ public class CoverageDisplay implements DocumentListener {
     }
 
     public void beforeDocumentChange(DocumentEvent event) {
+        clear();
     }
 
     public void documentChanged(DocumentEvent event) {
@@ -67,7 +68,7 @@ public class CoverageDisplay implements DocumentListener {
         }
     }
 
-    public void clear() {
+    private void clear() {
         MarkupModel model = editor.getMarkupModel();
 
         for (RangeHighlighter rangeHighlighter : highlights) {
