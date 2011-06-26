@@ -90,7 +90,7 @@ public class CoverageDisplay implements DocumentListener {
 
             sideHighlighter.setErrorStripeMarkColor(color);
             sideHighlighter.setErrorStripeTooltip(
-                    executed > 0 ? "Statement executed " + executed + " times" : "Statement was not executed");
+                    executed > 0 ? "Line executed " + executed + " times" : "Line was not executed");
 
             highlights.add(sideHighlighter);
         }
