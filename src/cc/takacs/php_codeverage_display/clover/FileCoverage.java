@@ -1,29 +1,27 @@
 package cc.takacs.php_codeverage_display.clover;
 
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Set;
 
 /**
  * @author Zsolt Takacs <zsolt@takacs.cc>
  */
 public class FileCoverage {
-    private ArrayList<Integer> coveredLines;
-    private ArrayList<Integer> uncoveredLines;
-
-    public FileCoverage(ArrayList<Integer> coveredLines, ArrayList<Integer> uncoveredLines) {
-        this.coveredLines = coveredLines;
-        this.uncoveredLines = uncoveredLines;
-    }
+    private HashMap<Integer, LineCoverage> lines;
 
     public FileCoverage() {
-        this.coveredLines = new ArrayList<Integer>();
-        this.uncoveredLines = new ArrayList<Integer>();
+        lines = new HashMap<Integer, LineCoverage>();
     }
 
-    public ArrayList<Integer> getCoveredLines() {
-        return coveredLines;
+    public void addLine(int line, LineCoverage coverage) {
+        lines.put(line, coverage);
     }
 
-    public ArrayList<Integer> getUncoveredLines() {
-        return uncoveredLines;
+    public LineCoverage getLine(int line) {
+        return lines.get(line);
+    }
+
+    public Set<Integer> getKeys() {
+        return lines.keySet();
     }
 }

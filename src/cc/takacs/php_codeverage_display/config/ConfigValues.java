@@ -18,6 +18,8 @@ public class ConfigValues {
     public int uncoveredR = 255;
     public int uncoveredG = 0;
     public int uncoveredB = 0;
+    public boolean highlightSides = false;
+    public boolean highlightLines = true;
 
     public ConfigValues() {
     }
