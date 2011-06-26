@@ -5,6 +5,11 @@ License: GPLv3
 
 ## Changelog:
 
+### v0.1.0
+ * highlighting of lines and left side of editor can be toggled (#5)
+ * error marks on right side of editor (#2)
+ * fix for projects opened on symlinked paths (#7)
+
 ### v0.0.5
  * remove highlights on first edit (#6)
  * redraw highlights on config changes

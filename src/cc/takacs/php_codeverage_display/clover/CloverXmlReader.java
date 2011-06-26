@@ -49,7 +49,6 @@ public class CloverXmlReader {
                     coverageCollection.add(coveredFilename, fileCoverage);
                 }
             } catch (Exception e) {
-                e.printStackTrace();
             }
         }
 

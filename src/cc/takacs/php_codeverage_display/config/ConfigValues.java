@@ -11,7 +11,6 @@ public class ConfigValues {
     private static ConfigValues ourInstance = new ConfigValues();
 
     public String cloverXmlPath = "";
-
     public int coveredR = 0;
     public int coveredG = 255;
     public int coveredB = 0;
