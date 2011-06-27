@@ -1,16 +1,16 @@
 package cc.takacs.php_codeverage_display.clover;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Set;
 
 /**
  * @author Zsolt Takacs <zsolt@takacs.cc>
  */
 public class FileCoverage {
-    private HashMap<Integer, LineCoverage> lines;
+    private LinkedHashMap<Integer, LineCoverage> lines;
 
     public FileCoverage() {
-        lines = new HashMap<Integer, LineCoverage>();
+        lines = new LinkedHashMap<Integer, LineCoverage>();
     }
 
     public void addLine(int line, LineCoverage coverage) {
@@ -23,5 +23,9 @@ public class FileCoverage {
 
     public Set<Integer> getKeys() {
         return lines.keySet();
+    }
+
+    public boolean hasLines() {
+        return lines.size() > 0;
     }
 }

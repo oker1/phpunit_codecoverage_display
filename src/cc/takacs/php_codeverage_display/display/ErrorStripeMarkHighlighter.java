@@ -11,7 +11,7 @@ import java.awt.*;
 public class ErrorStripeMarkHighlighter implements Highlighter {
     public void highlight(RangeHighlighter lineHighlighter, TextAttributes textAttributes, Color color, int executed) {
         lineHighlighter.setErrorStripeMarkColor(color);
-            lineHighlighter.setErrorStripeTooltip(
-                    executed > 0 ? "Line executed " + executed + " times" : "Line was not executed");
+        String tooltip = executed > 0 ? "Line executed " + executed + " times" : "Line was not executed";
+        lineHighlighter.setErrorStripeTooltip(tooltip);
     }
 }
