@@ -54,46 +54,37 @@ public class CoverageDisplay implements DocumentListener {
     }
 
     private void highlightLine(Document document, final Color color, int line, int executed) {
+        SideHighlighter sideHighlighter = new SideHighlighter();
+        LineHighlighter lineHighlighter = new LineHighlighter();
+        ErrorStripeMarkHighlighter errorStripeMarkHighlighter = new ErrorStripeMarkHighlighter();
+
         if (line <= document.getLineCount()) {
-            int lineStartOffset = document.getLineStartOffset(line - 1);
-            int lineEndOffset = document.getLineEndOffset(line - 1);
-
             TextAttributes attributes = new TextAttributes();
+
+            RangeHighlighter highlighter = createRangeHighlighter(document, line, attributes);
+
             if (ConfigValues.getInstance().highlightLines) {
-                attributes.setBackgroundColor(color);
+                lineHighlighter.highlight(highlighter, attributes, color, executed);
             }
-
-            RangeHighlighter lineHighlighter = this.editor.getMarkupModel().addRangeHighlighter(
-                    lineStartOffset, lineEndOffset, 3333, attributes, HighlighterTargetArea.LINES_IN_RANGE
-            );
-
-            highlights.add(lineHighlighter);
-
-            RangeHighlighter sideHighlighter = this.editor.getMarkupModel().addRangeHighlighter(
-                    lineStartOffset, lineEndOffset, 3333, null, HighlighterTargetArea.LINES_IN_RANGE
-            );
 
             if (ConfigValues.getInstance().highlightSides) {
-                lineHighlighter.setLineMarkerRenderer(new LineMarkerRenderer() {
-                    public void paint(Editor editor, Graphics graphics, Rectangle rectangle) {
-                        Color origColor = graphics.getColor();
-                        try {
-                            graphics.setColor(color);
-                            graphics.drawRect(rectangle.x, rectangle.y, rectangle.width, rectangle.height + editor.getLineHeight());
-                            graphics.fillRect(rectangle.x, rectangle.y, rectangle.width, rectangle.height + editor.getLineHeight());
-                        } finally {
-                            graphics.setColor(origColor);
-                        }
-                    }
-                });
+                sideHighlighter.highlight(highlighter, attributes, color, executed);
             }
 
-            sideHighlighter.setErrorStripeMarkColor(color);
-            sideHighlighter.setErrorStripeTooltip(
-                    executed > 0 ? "Line executed " + executed + " times" : "Line was not executed");
+            errorStripeMarkHighlighter.highlight(highlighter, attributes, color, executed);
 
-            highlights.add(sideHighlighter);
+            highlights.add(highlighter);
         }
+    }
+
+    private RangeHighlighter createRangeHighlighter(Document document, int line, TextAttributes attributes) {
+        int lineStartOffset = document.getLineStartOffset(line - 1);
+        int lineEndOffset = document.getLineEndOffset(line - 1);
+
+
+        return this.editor.getMarkupModel().addRangeHighlighter(
+                lineStartOffset, lineEndOffset, 3333, attributes, HighlighterTargetArea.LINES_IN_RANGE
+        );
     }
 
     private void clear() {
