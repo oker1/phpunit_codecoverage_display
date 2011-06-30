@@ -17,9 +17,11 @@ import java.util.ArrayList;
 public class CoverageHighlighter {
     private Editor editor;
     private ArrayList<RangeHighlighter> highlights;
+    private ConfigValues configValues;
 
-    public CoverageHighlighter(Editor editor) {
+    public CoverageHighlighter(Editor editor, ConfigValues configValues) {
         this.editor = editor;
+        this.configValues = configValues;
         highlights = new ArrayList<RangeHighlighter>();
     }
 
@@ -35,11 +37,11 @@ public class CoverageHighlighter {
 
             RangeHighlighter highlighter = createRangeHighlighter(fromLine, toLine, attributes);
 
-            if (ConfigValues.getInstance().highlightLines) {
+            if (configValues.highlightLines) {
                 lineHighlighter.highlight(highlighter, attributes, color, executed);
             }
 
-            if (ConfigValues.getInstance().highlightSides) {
+            if (configValues.highlightSides) {
                 sideHighlighter.highlight(highlighter, attributes, color, executed);
             }
 

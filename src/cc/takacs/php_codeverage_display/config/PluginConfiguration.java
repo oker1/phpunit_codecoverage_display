@@ -16,17 +16,19 @@ import javax.swing.*;
 public class PluginConfiguration implements Configurable, PersistentStateComponent<ConfigValues> {
     private ConfigPanel configPanel;
     private DisplayHandler displayHandler;
+    private ConfigValues configValues;
 
-    public PluginConfiguration(DisplayHandler displayHandler) {
+    public PluginConfiguration(DisplayHandler displayHandler, ConfigValues configValues) {
+        this.configValues = configValues;
         this.displayHandler = displayHandler;
     }
 
     public ConfigValues getState() {
-        return ConfigValues.getInstance();
+        return configValues;
     }
 
-    public void loadState(ConfigValues configValues) {
-        ConfigValues.setInstance(configValues);
+    public void loadState(ConfigValues values) {
+        configValues.loadFromInstance(values);
     }
 
     @Nls
@@ -41,7 +43,6 @@ public class PluginConfiguration implements Configurable, PersistentStateCompone
     }
 
     public boolean isModified() {
-        ConfigValues configValues = ConfigValues.getInstance();
         return
                 !configPanel.cloverLocation.getText().equals(configValues.cloverXmlPath) ||
                         !configValues.getCoveredColor().equals(configPanel.coveredColor.getBackground()) ||
@@ -51,8 +52,6 @@ public class PluginConfiguration implements Configurable, PersistentStateCompone
     }
 
     public void apply() throws ConfigurationException {
-        ConfigValues configValues = ConfigValues.getInstance();
-
         configValues.setCloverXmlPath(configPanel.cloverLocation.getText());
         configValues.setCoveredColor(configPanel.coveredColor.getBackground());
         configValues.setUncoveredColor(configPanel.uncoveredColor.getBackground());
@@ -63,7 +62,6 @@ public class PluginConfiguration implements Configurable, PersistentStateCompone
     }
 
     public void reset() {
-        ConfigValues configValues = ConfigValues.getInstance();
         configPanel.cloverLocation.setText(configValues.cloverXmlPath);
         configPanel.coveredColor.setBackground(configValues.getCoveredColor());
         configPanel.uncoveredColor.setBackground(configValues.getUncoveredColor());

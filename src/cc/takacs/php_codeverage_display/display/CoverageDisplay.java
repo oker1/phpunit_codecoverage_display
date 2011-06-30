@@ -15,10 +15,12 @@ import java.util.Iterator;
 public class CoverageDisplay implements DocumentListener {
     private FileCoverage fileCoverage;
     private CoverageHighlighter coverageHighlighter;
+    private ConfigValues configValues;
 
-    public CoverageDisplay(Editor editor) {
+    public CoverageDisplay(Editor editor, ConfigValues configValues) {
+        this.configValues = configValues;
         fileCoverage = new FileCoverage();
-        coverageHighlighter = new CoverageHighlighter(editor);
+        coverageHighlighter = new CoverageHighlighter(editor, configValues);
     }
 
     public void setFileCoverage(FileCoverage fileCoverage) {
@@ -49,9 +51,9 @@ public class CoverageDisplay implements DocumentListener {
 
                 if (lineCoverage.isExecuted() != lastLineWasExecuted || lastLineNumber != lineNumber - 1) {
                     if (lastLineWasExecuted) {
-                        this.coverageHighlighter.highlightLines(ConfigValues.getInstance().getCoveredColor(), lastDifferentLine, lastLineNumber, lastLineExecuted);
+                        this.coverageHighlighter.highlightLines(configValues.getCoveredColor(), lastDifferentLine, lastLineNumber, lastLineExecuted);
                     } else {
-                        this.coverageHighlighter.highlightLines(ConfigValues.getInstance().getUncoveredColor(), lastDifferentLine, lastLineNumber, lastLineExecuted);
+                        this.coverageHighlighter.highlightLines(configValues.getUncoveredColor(), lastDifferentLine, lastLineNumber, lastLineExecuted);
                     }
 
                     lastLineExecuted = lineCoverage.getExecuted();
@@ -63,9 +65,9 @@ public class CoverageDisplay implements DocumentListener {
 
                 if (!iterator.hasNext()) {
                     if (lastLineWasExecuted) {
-                        this.coverageHighlighter.highlightLines(ConfigValues.getInstance().getCoveredColor(), lastDifferentLine, lastLineNumber, lastLineExecuted);
+                        this.coverageHighlighter.highlightLines(configValues.getCoveredColor(), lastDifferentLine, lastLineNumber, lastLineExecuted);
                     } else {
-                        this.coverageHighlighter.highlightLines(ConfigValues.getInstance().getUncoveredColor(), lastDifferentLine, lastLineNumber, lastLineExecuted);
+                        this.coverageHighlighter.highlightLines(configValues.getUncoveredColor(), lastDifferentLine, lastLineNumber, lastLineExecuted);
                     }
                 }
             }

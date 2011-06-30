@@ -12,6 +12,10 @@
 
     <project-components>
         <component>
+            <implementation-class>cc.takacs.php_codeverage_display.config.ConfigValues</implementation-class>
+            <interface-class>cc.takacs.php_codeverage_display.config.ConfigValues</interface-class>
+        </component>
+        <component>
             <implementation-class>cc.takacs.php_codeverage_display.ProjectPlugin</implementation-class>
             <interface-class>cc.takacs.php_codeverage_display.ProjectPlugin</interface-class>
         </component>

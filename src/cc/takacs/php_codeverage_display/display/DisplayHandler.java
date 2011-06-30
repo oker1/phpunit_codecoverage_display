@@ -13,8 +13,10 @@ import javax.swing.*;
  */
 public class DisplayHandler {
     private FilenameDisplayMap map;
+    private ConfigValues configValues;
 
-    public DisplayHandler() {
+    public DisplayHandler(ConfigValues configValues) {
+        this.configValues = configValues;
         this.map = new FilenameDisplayMap();
     }
 
@@ -36,11 +38,11 @@ public class DisplayHandler {
     }
 
     private String getCloverXmlPath() {
-        return ConfigValues.getInstance().getCloverXmlPath();
+        return configValues.getCloverXmlPath();
     }
 
     public void addDisplayForEditor(Editor editor, String file) {
-        CoverageDisplay display = new CoverageDisplay(editor);
+        CoverageDisplay display = new CoverageDisplay(editor, configValues);
 
         editor.getDocument().addDocumentListener(display);
 

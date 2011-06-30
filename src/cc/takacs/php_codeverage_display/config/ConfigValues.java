@@ -8,8 +8,6 @@ import java.awt.*;
  * @author Zsolt Takacs <zsolt@takacs.cc>
  */
 public class ConfigValues {
-    private static ConfigValues ourInstance = new ConfigValues();
-
     public String cloverXmlPath = "";
     public int coveredR = 0;
     public int coveredG = 255;
@@ -20,15 +18,16 @@ public class ConfigValues {
     public boolean highlightSides = false;
     public boolean highlightLines = true;
 
-    public ConfigValues() {
-    }
-
-    public static ConfigValues getInstance() {
-        return ourInstance;
-    }
-
-    public static void setInstance(ConfigValues instance) {
-        ourInstance = instance;
+    public void loadFromInstance(ConfigValues values) {
+        cloverXmlPath = values.cloverXmlPath;
+        coveredR = values.coveredR;
+        coveredG = values.coveredG;
+        coveredB = values.coveredB;
+        uncoveredR = values.uncoveredR;
+        uncoveredG = values.uncoveredG;
+        uncoveredB = values.uncoveredB;
+        highlightSides = values.highlightSides;
+        highlightLines = values.highlightLines;
     }
 
     public void setCloverXmlPath(String cloverXmlPath) {
