@@ -1,7 +1,7 @@
 <idea-plugin version="2">
     <name>PHPUnit code coverage</name>
     <description>Displays PHPUnit code coverage of file in the editor.</description>
-    <version>0.1.0</version>
+    <version>0.1.1</version>
     <vendor>Zsolt Takacs</vendor>
     <idea-version since-build="107.120"/>
 

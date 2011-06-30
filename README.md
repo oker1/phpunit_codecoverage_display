@@ -5,6 +5,10 @@ License: GPLv3
 
 ## Changelog:
 
+### v0.1.1
+ * highlight continous lines as blocks (#8)
+ * fix for multiple open projects
+
 ### v0.1.0
  * highlighting of lines and left side of editor can be toggled (#5)
  * error marks on right side of editor (#2)
