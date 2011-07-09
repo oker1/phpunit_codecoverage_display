@@ -5,9 +5,6 @@ import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.fileEditor.*;
 import com.intellij.openapi.vfs.VirtualFile;
 
-import java.io.File;
-import java.io.IOException;
-
 /**
  * @author Zsolt Takacs <zsolt@takacs.cc>
  */
@@ -29,12 +26,7 @@ public class EditorManagerListener implements FileEditorManagerListener {
         }
 
         if (editor != null) {
-            try {
-                // resolve symlinks in path
-                String path = new File(file.getPath()).getCanonicalPath();
-                this.displayHandler.addDisplayForEditor(editor, path);
-            } catch (IOException e) {
-            }
+            this.displayHandler.addDisplayForEditor(editor, file.getPath());
         }
     }
 

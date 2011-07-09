@@ -3,8 +3,10 @@ package cc.takacs.php_codeverage_display;
 import cc.takacs.php_codeverage_display.display.DisplayHandler;
 import cc.takacs.php_codeverage_display.listener.EditorManagerListener;
 import cc.takacs.php_codeverage_display.listener.ExecListener;
+import cc.takacs.php_codeverage_display.listener.FileOperationListener;
 import com.intellij.execution.ExecutionManager;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.vfs.VirtualFileManager;
 import com.intellij.util.messages.MessageBusConnection;
 
 /**
@@ -27,5 +29,7 @@ public class ProjectPlugin {
 
         connect.subscribe(ExecutionManager.EXECUTION_TOPIC, new ExecListener(displayHandler));
         connect.subscribe(EditorManagerListener.FILE_EDITOR_MANAGER, new EditorManagerListener(displayHandler));
+        VirtualFileManager.getInstance().addVirtualFileListener(new FileOperationListener(displayHandler));
     }
+
 }

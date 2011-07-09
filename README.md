@@ -5,6 +5,9 @@ License: GPLv3
 
 ## Changelog:
 
+### v0.1.2
+ * fix coverage after moving/renaming files (#9)
+
 ### v0.1.1
  * highlight continous lines as blocks (#8)
  * fix for multiple open projects

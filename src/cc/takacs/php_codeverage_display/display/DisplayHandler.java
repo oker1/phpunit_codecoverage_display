@@ -52,4 +52,13 @@ public class DisplayHandler {
     public void removeDisplayForFile(String file) {
         this.map.remove(file);
     }
+
+    public void reassignDisplay(String fromFile, String toFile) {
+        CoverageDisplay display = map.get(fromFile);
+
+        if (display != null) {
+            map.remove(fromFile);
+            map.add(toFile, display);
+        }
+    }
 }
