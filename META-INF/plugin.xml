@@ -1,4 +1,4 @@
-<idea-plugin version="2">
+<idea-plugin version="2" url="https://github.com/oker1/phpunit_codecoverage_display">
     <name>PHPUnit code coverage</name>
     <description>Displays PHPUnit code coverage of file in the editor.</description>
     <version>0.1.2</version>
