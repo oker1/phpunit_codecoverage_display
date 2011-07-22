@@ -15,20 +15,23 @@ public class FilenameDisplayMap {
     }
 
     public synchronized void add(String filename, CoverageDisplay display) {
-        this.map.put(convertPathToCanonical(filename), display);
-    }
-
-    private String convertPathToCanonical(String filename) {
         try {
-            // resolve symlinks in path
-            return new File(filename).getCanonicalPath();
+            String resolvedFilename = convertPathToCanonical(filename);
+            this.map.put(resolvedFilename, display);
         } catch (IOException e) {
-            return "";
         }
     }
 
+    private String convertPathToCanonical(String filename) throws IOException {
+        return new File(filename).getCanonicalPath();
+    }
+
     public synchronized void remove(String filename) {
-        this.map.remove(convertPathToCanonical(filename));
+        try {
+            String resolvedFilename = convertPathToCanonical(filename);
+            this.map.remove(resolvedFilename);
+        } catch (IOException e) {
+        }
     }
 
     public synchronized CoverageDisplay get(String filename) {
