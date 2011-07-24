@@ -17,7 +17,7 @@ public class DisplayHandler {
 
     public DisplayHandler(ConfigValues configValues) {
         this.configValues = configValues;
-        this.map = new FilenameDisplayMap();
+        this.map = new SimpleFilenameDisplayMap();
     }
 
     public void updateDisplays() {
