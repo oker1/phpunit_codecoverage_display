@@ -21,7 +21,7 @@ public class UnixToWindowsDisplayMapDecoratorDirectoryMappingTest extends TestCa
     private FilenameDisplayMap decoratedMock;
     private ConfigValues config = new ConfigValues();
 
-    private final TestCoverageDisplay testCoverageDisplay = new TestCoverageDisplay();
+    private final CoverageDisplayHelper coverageDisplayHelper = new CoverageDisplayHelper();
 
     @Before
     public void setUp() {
@@ -34,7 +34,7 @@ public class UnixToWindowsDisplayMapDecoratorDirectoryMappingTest extends TestCa
     }
 
     public void testPathIsTranslatedInAdd() {
-        CoverageDisplay display = testCoverageDisplay.createDisplay();
+        CoverageDisplay display = coverageDisplayHelper.createDisplay();
 
         map.add(MAPPING_FROM + "\\folder1\\file1.php", display);
 

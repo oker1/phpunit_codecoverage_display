@@ -5,8 +5,8 @@ import cc.takacs.php_codeverage_display.display.CoverageDisplay;
 import com.intellij.openapi.editor.Editor;
 import org.mockito.Mockito;
 
-public class TestCoverageDisplay {
-    public TestCoverageDisplay() {
+public class CoverageDisplayHelper {
+    public CoverageDisplayHelper() {
     }
 
     public CoverageDisplay createDisplay() {

@@ -16,7 +16,7 @@ public class SimpleFilenameDisplayMapTest extends TestCase {
     public static final String TEST_FILENAME = File.separator + "testfile";
     public static final String RELATIVE_TEST_FILENAME = "testfile";
     private FilenameDisplayMap filenameDisplayMap;
-    private final TestCoverageDisplay testCoverageDisplay = new TestCoverageDisplay();
+    private final CoverageDisplayHelper coverageDisplayHelper = new CoverageDisplayHelper();
 
     @Before
     public void setUp() {
@@ -24,7 +24,7 @@ public class SimpleFilenameDisplayMapTest extends TestCase {
     }
 
     public void testAddedDisplayCanBeFound() {
-        CoverageDisplay display = testCoverageDisplay.createDisplay();
+        CoverageDisplay display = coverageDisplayHelper.createDisplay();
 
         filenameDisplayMap.add(TEST_FILENAME, display);
 
@@ -32,7 +32,7 @@ public class SimpleFilenameDisplayMapTest extends TestCase {
     }
 
     public void testRemovedDisplayIsNotReturned() {
-        CoverageDisplay display = testCoverageDisplay.createDisplay();
+        CoverageDisplay display = coverageDisplayHelper.createDisplay();
 
         filenameDisplayMap.add(TEST_FILENAME, display);
         filenameDisplayMap.remove(TEST_FILENAME);
@@ -45,7 +45,7 @@ public class SimpleFilenameDisplayMapTest extends TestCase {
     }
 
     public void testCanonicalPathIsResolvedInAdd() throws IOException {
-        CoverageDisplay display = testCoverageDisplay.createDisplay();
+        CoverageDisplay display = coverageDisplayHelper.createDisplay();
 
         String resolved = calculateCanonicalPath();
 
@@ -55,7 +55,7 @@ public class SimpleFilenameDisplayMapTest extends TestCase {
     }
 
     public void testCanonicalPathIsResolvedInRemove() throws IOException {
-        CoverageDisplay display = testCoverageDisplay.createDisplay();
+        CoverageDisplay display = coverageDisplayHelper.createDisplay();
 
         String resolved = calculateCanonicalPath();
 

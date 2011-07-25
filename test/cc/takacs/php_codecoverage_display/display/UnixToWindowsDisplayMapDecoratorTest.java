@@ -18,7 +18,7 @@ public class UnixToWindowsDisplayMapDecoratorTest extends TestCase {
 
     private UnixToWindowsDisplayMapDecorator map;
     private FilenameDisplayMap decoratedMock;
-    private final TestCoverageDisplay testCoverageDisplay = new TestCoverageDisplay();
+    private final CoverageDisplayHelper coverageDisplayHelper = new CoverageDisplayHelper();
 
     @Before
     public void setUp() {
@@ -29,7 +29,7 @@ public class UnixToWindowsDisplayMapDecoratorTest extends TestCase {
     }
 
     public void testPathSeparatorIsReplacedInAdd() {
-        CoverageDisplay display = testCoverageDisplay.createDisplay();
+        CoverageDisplay display = coverageDisplayHelper.createDisplay();
 
         map.add(WINDOWS_PATH, display);
 
@@ -49,7 +49,7 @@ public class UnixToWindowsDisplayMapDecoratorTest extends TestCase {
     }
 
     public void testGetDelegates() {
-        CoverageDisplay display = testCoverageDisplay.createDisplay();
+        CoverageDisplay display = coverageDisplayHelper.createDisplay();
 
         when(decoratedMock.get(WINDOWS_PATH)).thenReturn(display);
 
@@ -57,7 +57,7 @@ public class UnixToWindowsDisplayMapDecoratorTest extends TestCase {
     }
 
     public void testAddDelegates() {
-        CoverageDisplay display = testCoverageDisplay.createDisplay();
+        CoverageDisplay display = coverageDisplayHelper.createDisplay();
 
         map.add(UNIX_PATH, display);
 
@@ -71,7 +71,7 @@ public class UnixToWindowsDisplayMapDecoratorTest extends TestCase {
     }
 
     public void testDoesntMapWithEmtpyMappingConfig() {
-        CoverageDisplay display = testCoverageDisplay.createDisplay();
+        CoverageDisplay display = coverageDisplayHelper.createDisplay();
 
         map.add(UNIX_PATH, display);
 
