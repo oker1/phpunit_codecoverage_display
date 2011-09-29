@@ -1,7 +1,5 @@
 package cc.takacs.php_codeverage_display.display;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.HashMap;
 
 /**
@@ -15,23 +13,11 @@ public class SimpleFilenameDisplayMap implements FilenameDisplayMap {
     }
 
     public synchronized void add(String filename, CoverageDisplay display) {
-        try {
-            String resolvedFilename = convertPathToCanonical(filename);
-            this.map.put(resolvedFilename, display);
-        } catch (IOException e) {
-        }
-    }
-
-    private String convertPathToCanonical(String filename) throws IOException {
-        return new File(filename).getCanonicalPath();
+        this.map.put(filename, display);
     }
 
     public synchronized void remove(String filename) {
-        try {
-            String resolvedFilename = convertPathToCanonical(filename);
-            this.map.remove(resolvedFilename);
-        } catch (IOException e) {
-        }
+        this.map.remove(filename);
     }
 
     public synchronized CoverageDisplay get(String filename) {

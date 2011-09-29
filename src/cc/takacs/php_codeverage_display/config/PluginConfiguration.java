@@ -48,7 +48,10 @@ public class PluginConfiguration implements Configurable, PersistentStateCompone
                         !configValues.getCoveredColor().equals(configPanel.coveredColor.getBackground()) ||
                         !configValues.getUncoveredColor().equals(configPanel.uncoveredColor.getBackground()) ||
                         configValues.highlightLines != configPanel.lineCheckBox.isSelected() ||
-                        configValues.highlightSides != configPanel.sideCheckBox.isSelected();
+                        configValues.highlightSides != configPanel.sideCheckBox.isSelected() ||
+                        configValues.directoryMapping != configPanel.dirTranslation.isSelected() ||
+                        !configValues.mapDirectoryFrom.equals(configPanel.localDir.getText()) ||
+                        !configValues.mapDirectoryTo.equals(configPanel.remoteDir.getText());
     }
 
     public void apply() throws ConfigurationException {
@@ -57,6 +60,9 @@ public class PluginConfiguration implements Configurable, PersistentStateCompone
         configValues.setUncoveredColor(configPanel.uncoveredColor.getBackground());
         configValues.highlightLines = configPanel.lineCheckBox.isSelected();
         configValues.highlightSides = configPanel.sideCheckBox.isSelected();
+        configValues.directoryMapping = configPanel.dirTranslation.isSelected();
+        configValues.mapDirectoryFrom = configPanel.localDir.getText();
+        configValues.mapDirectoryTo = configPanel.remoteDir.getText();
 
         displayHandler.updateDisplays();
     }
@@ -67,6 +73,13 @@ public class PluginConfiguration implements Configurable, PersistentStateCompone
         configPanel.uncoveredColor.setBackground(configValues.getUncoveredColor());
         configPanel.sideCheckBox.setSelected(configValues.highlightSides);
         configPanel.lineCheckBox.setSelected(configValues.highlightLines);
+        configPanel.dirTranslation.setSelected(configValues.directoryMapping);
+        configPanel.localDir.setText(configValues.mapDirectoryFrom);
+        configPanel.remoteDir.setText(configValues.mapDirectoryTo);
+
+        configPanel.localDir.setEnabled(configPanel.dirTranslation.isSelected());
+        configPanel.remoteDir.setEnabled(configPanel.dirTranslation.isSelected());
+        configPanel.browseLocalDir.setEnabled(configPanel.dirTranslation.isSelected());
     }
 
     public void disposeUIResources() {

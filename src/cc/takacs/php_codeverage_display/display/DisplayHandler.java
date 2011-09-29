@@ -17,7 +17,7 @@ public class DisplayHandler {
 
     public DisplayHandler(ConfigValues configValues) {
         this.configValues = configValues;
-        this.map = new SimpleFilenameDisplayMap();
+        this.map = new CanonicalDisplayMapDecorator(new SimpleFilenameDisplayMap());
     }
 
     public void updateDisplays() {
@@ -59,6 +59,12 @@ public class DisplayHandler {
         if (display != null) {
             map.remove(fromFile);
             map.add(toFile, display);
+        }
+    }
+
+    public void redrawIfXmlChanged(String path) {
+        if (path.equals(configValues.cloverXmlPath)) {
+            updateDisplays();
         }
     }
 }

@@ -14,7 +14,7 @@ import static org.mockito.Mockito.verify;
  * @author Zsolt Takacs <zsolt@takacs.cc>
  */
 public class UnixToWindowsDisplayMapDecoratorDirectoryMappingTest extends TestCase {
-    public static final String MAPPING_FROM = "C:\\Projects\\test";
+    public static final String MAPPING_FROM = "C:/Projects/test";
     public static final String MAPPING_TO = "/home/user/workspace";
 
     private UnixToWindowsDisplayMapDecorator map;
@@ -36,13 +36,13 @@ public class UnixToWindowsDisplayMapDecoratorDirectoryMappingTest extends TestCa
     public void testPathIsTranslatedInAdd() {
         CoverageDisplay display = coverageDisplayHelper.createDisplay();
 
-        map.add(MAPPING_FROM + "\\folder1\\file1.php", display);
+        map.add(MAPPING_FROM + "/folder1/file1.php", display);
 
         verify(decoratedMock).add(MAPPING_TO + "/folder1/file1.php", display);
     }
 
     public void testPathIsTranslatedInRemove() {
-        map.remove(MAPPING_FROM + "\\folder1\\file1.php");
+        map.remove(MAPPING_FROM + "/folder1/file1.php");
 
         verify(decoratedMock).remove(MAPPING_TO + "/folder1/file1.php");
     }

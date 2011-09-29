@@ -27,13 +27,14 @@ public class FileOperationListener implements VirtualFileListener {
         displayHandler.reassignDisplay(event.getFile().getPath(), newPath);
     }
 
+    public void contentsChanged(VirtualFileEvent event) {
+        displayHandler.redrawIfXmlChanged(event.getFile().getPath());
+    }
+
     public void fileMoved(VirtualFileMoveEvent event) {
     }
 
     public void propertyChanged(VirtualFilePropertyEvent event) {
-    }
-
-    public void contentsChanged(VirtualFileEvent event) {
     }
 
     public void fileCreated(VirtualFileEvent event) {

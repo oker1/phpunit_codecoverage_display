@@ -28,20 +28,6 @@ public class UnixToWindowsDisplayMapDecoratorTest extends TestCase {
         map = new UnixToWindowsDisplayMapDecorator(decoratedMock, config);
     }
 
-    public void testPathSeparatorIsReplacedInAdd() {
-        CoverageDisplay display = coverageDisplayHelper.createDisplay();
-
-        map.add(WINDOWS_PATH, display);
-
-        verify(decoratedMock).add(UNIX_PATH, display);
-    }
-
-    public void testPathSeparatorIsReplacedInRemove() {
-        map.remove(WINDOWS_PATH);
-
-        verify(decoratedMock).remove(UNIX_PATH);
-    }
-
     public void testPathSeparatorIsNotReplacedInGet() {
         map.get(WINDOWS_PATH);
 

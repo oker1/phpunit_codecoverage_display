@@ -7,16 +7,14 @@ import junit.framework.TestCase;
 import org.junit.Before;
 
 import java.io.File;
-import java.io.IOException;
 
 /**
  * @author Zsolt Takacs <zsolt@takacs.cc>
  */
 public class SimpleFilenameDisplayMapTest extends TestCase {
     public static final String TEST_FILENAME = File.separator + "testfile";
-    public static final String RELATIVE_TEST_FILENAME = "testfile";
-    private FilenameDisplayMap filenameDisplayMap;
     private final CoverageDisplayHelper coverageDisplayHelper = new CoverageDisplayHelper();
+    private FilenameDisplayMap filenameDisplayMap;
 
     @Before
     public void setUp() {
@@ -42,30 +40,5 @@ public class SimpleFilenameDisplayMapTest extends TestCase {
 
     public void testNullIsReturnedForNotAddedFilename() {
         assertNull(filenameDisplayMap.get(TEST_FILENAME));
-    }
-
-    public void testCanonicalPathIsResolvedInAdd() throws IOException {
-        CoverageDisplay display = coverageDisplayHelper.createDisplay();
-
-        String resolved = calculateCanonicalPath();
-
-        filenameDisplayMap.add(RELATIVE_TEST_FILENAME, display);
-
-        assertSame(display, filenameDisplayMap.get(resolved));
-    }
-
-    public void testCanonicalPathIsResolvedInRemove() throws IOException {
-        CoverageDisplay display = coverageDisplayHelper.createDisplay();
-
-        String resolved = calculateCanonicalPath();
-
-        filenameDisplayMap.add(resolved, display);
-        filenameDisplayMap.remove(RELATIVE_TEST_FILENAME);
-
-        assertNull(filenameDisplayMap.get(resolved));
-    }
-
-    private String calculateCanonicalPath() throws IOException {
-        return new File(".").getCanonicalPath() + File.separator + RELATIVE_TEST_FILENAME;
     }
 }

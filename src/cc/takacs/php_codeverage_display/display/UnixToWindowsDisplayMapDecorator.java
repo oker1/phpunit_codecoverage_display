@@ -28,9 +28,9 @@ public class UnixToWindowsDisplayMapDecorator implements FilenameDisplayMap {
 
     private String convertFilename(String filename) {
         if (filename.startsWith(configValues.mapDirectoryFrom)) {
-            filename = configValues.mapDirectoryTo + filename.substring(configValues.mapDirectoryFrom.length());
+            filename = configValues.mapDirectoryTo + "/" + filename.substring(configValues.mapDirectoryFrom.length() + 1);
         }
 
-        return filename.replace('\\', '/');
+        return filename;
     }
 }

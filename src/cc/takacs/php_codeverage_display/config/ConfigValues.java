@@ -17,6 +17,7 @@ public class ConfigValues {
     public int uncoveredB = 0;
     public boolean highlightSides = false;
     public boolean highlightLines = true;
+    public boolean directoryMapping = false;
     public String mapDirectoryFrom = "";
     public String mapDirectoryTo = "";
 
