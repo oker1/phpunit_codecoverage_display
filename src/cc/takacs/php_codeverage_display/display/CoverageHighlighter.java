@@ -54,8 +54,8 @@ public class CoverageHighlighter {
     private RangeHighlighter createRangeHighlighter(int fromLine, int toLine, TextAttributes attributes) {
         Document document = this.editor.getDocument();
 
-        int lineStartOffset = document.getLineStartOffset(fromLine - 1);
-        int lineEndOffset = document.getLineEndOffset(toLine - 1);
+        int lineStartOffset = document.getLineStartOffset(Math.max(0, fromLine - 1));
+        int lineEndOffset = document.getLineEndOffset(Math.max(0, toLine - 1));
 
         return this.editor.getMarkupModel().addRangeHighlighter(
                 lineStartOffset, lineEndOffset, 3333, attributes, HighlighterTargetArea.LINES_IN_RANGE
