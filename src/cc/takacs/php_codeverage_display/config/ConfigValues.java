@@ -31,6 +31,9 @@ public class ConfigValues {
         uncoveredB = values.uncoveredB;
         highlightSides = values.highlightSides;
         highlightLines = values.highlightLines;
+        directoryMapping = values.directoryMapping;
+        mapDirectoryFrom = values.mapDirectoryFrom;
+        mapDirectoryTo = values.mapDirectoryTo;
     }
 
     public void setCloverXmlPath(String cloverXmlPath) {

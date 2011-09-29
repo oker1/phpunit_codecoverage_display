@@ -64,6 +64,7 @@ public class PluginConfiguration implements Configurable, PersistentStateCompone
         configValues.mapDirectoryFrom = configPanel.localDir.getText();
         configValues.mapDirectoryTo = configPanel.remoteDir.getText();
 
+        displayHandler.initializeMap();
         displayHandler.updateDisplays();
     }
 

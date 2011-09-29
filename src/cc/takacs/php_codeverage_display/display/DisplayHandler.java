@@ -5,6 +5,11 @@ import cc.takacs.php_codeverage_display.clover.CoverageCollection;
 import cc.takacs.php_codeverage_display.clover.FileCoverage;
 import cc.takacs.php_codeverage_display.config.ConfigValues;
 import com.intellij.openapi.editor.Editor;
+import com.intellij.openapi.fileEditor.FileEditor;
+import com.intellij.openapi.fileEditor.FileEditorManager;
+import com.intellij.openapi.fileEditor.TextEditor;
+import com.intellij.openapi.project.Project;
+import com.intellij.openapi.vfs.VirtualFile;
 
 import javax.swing.*;
 
@@ -14,10 +19,36 @@ import javax.swing.*;
 public class DisplayHandler {
     private FilenameDisplayMap map;
     private ConfigValues configValues;
+    private Project project;
 
-    public DisplayHandler(ConfigValues configValues) {
+    public DisplayHandler(ConfigValues configValues, Project project) {
         this.configValues = configValues;
-        this.map = new CanonicalDisplayMapDecorator(new SimpleFilenameDisplayMap());
+        this.project = project;
+
+        initializeMap();
+    }
+
+    public void initializeMap() {
+        if (configValues.directoryMapping) {
+            this.map = new UnixToWindowsDisplayMapDecorator(new SimpleFilenameDisplayMap(), configValues);
+        } else {
+            this.map = new CanonicalDisplayMapDecorator(new SimpleFilenameDisplayMap());
+        }
+
+        for (VirtualFile file : FileEditorManager.getInstance(project).getOpenFiles()) {
+            Editor editor = null;
+
+            for (FileEditor fileEditor : FileEditorManager.getInstance(project).getEditors(file)) {
+                if ((fileEditor instanceof TextEditor)) {
+                    editor = ((TextEditor) fileEditor).getEditor();
+                    break;
+                }
+            }
+
+            if (editor != null) {
+                addDisplayForEditor(editor, file.getPath());
+            }
+        }
     }
 
     public void updateDisplays() {

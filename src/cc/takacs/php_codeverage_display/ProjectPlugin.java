@@ -5,6 +5,7 @@ import cc.takacs.php_codeverage_display.listener.EditorManagerListener;
 import cc.takacs.php_codeverage_display.listener.ExecListener;
 import cc.takacs.php_codeverage_display.listener.FileOperationListener;
 import com.intellij.execution.ExecutionManager;
+import com.intellij.openapi.fileEditor.FileEditorManager;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFileManager;
 import com.intellij.util.messages.MessageBusConnection;
@@ -20,7 +21,7 @@ public class ProjectPlugin {
     public ProjectPlugin(Project project, DisplayHandler displayHandler) {
         this.project = project;
         this.displayHandler = displayHandler;
-
+        
         registerListeners(displayHandler);
     }
 
