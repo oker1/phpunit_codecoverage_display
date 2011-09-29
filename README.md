@@ -5,6 +5,10 @@ License: GPLv3
 
 ## Changelog:
 
+### v0.2.0
+ * path mapping to enable shared folder + ssh workflow (#10)
+ * fix bug with coverage data on first line of php file (#11)
+
 ### v0.1.2
  * fix coverage after moving/renaming files (#9)
 
