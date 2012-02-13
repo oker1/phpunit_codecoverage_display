@@ -4,12 +4,18 @@ import cc.takacs.php_codeverage_display.clover.CloverXmlReader;
 import cc.takacs.php_codeverage_display.clover.CoverageCollection;
 import cc.takacs.php_codeverage_display.clover.FileCoverage;
 import cc.takacs.php_codeverage_display.config.ConfigValues;
+import cc.takacs.php_codeverage_display.displaymap.CanonicalDisplayMapDecorator;
+import cc.takacs.php_codeverage_display.displaymap.FilenameDisplayMap;
+import cc.takacs.php_codeverage_display.displaymap.SimpleFilenameDisplayMap;
+import cc.takacs.php_codeverage_display.displaymap.UnixToWindowsDisplayMapDecorator;
+import cc.takacs.php_codeverage_display.displaymap.WindowsDisplayMapDecorator;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.fileEditor.FileEditor;
 import com.intellij.openapi.fileEditor.FileEditorManager;
 import com.intellij.openapi.fileEditor.TextEditor;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
+import org.apache.commons.lang.SystemUtils;
 
 import javax.swing.*;
 
@@ -29,11 +35,7 @@ public class DisplayHandler {
     }
 
     public void initializeMap() {
-        if (configValues.directoryMapping) {
-            this.map = new UnixToWindowsDisplayMapDecorator(new SimpleFilenameDisplayMap(), configValues);
-        } else {
-            this.map = new CanonicalDisplayMapDecorator(new SimpleFilenameDisplayMap());
-        }
+        createDisplayMap();
 
         for (VirtualFile file : FileEditorManager.getInstance(project).getOpenFiles()) {
             Editor editor = null;
@@ -48,6 +50,17 @@ public class DisplayHandler {
             if (editor != null) {
                 addDisplayForEditor(editor, file.getPath());
             }
+        }
+    }
+
+    private void createDisplayMap()
+    {
+        if (configValues.directoryMapping) {
+            this.map = new UnixToWindowsDisplayMapDecorator(new SimpleFilenameDisplayMap(), configValues);
+        } else if (SystemUtils.IS_OS_WINDOWS) {
+            this.map = new WindowsDisplayMapDecorator(new SimpleFilenameDisplayMap());
+        } else {
+            this.map = new CanonicalDisplayMapDecorator(new SimpleFilenameDisplayMap());
         }
     }
 

@@ -1,9 +1,10 @@
-package cc.takacs.php_codecoverage_display.display;
+package cc.takacs.php_codecoverage_display.display.displaymap;
 
-import cc.takacs.php_codeverage_display.display.CanonicalDisplayMapDecorator;
+import cc.takacs.php_codecoverage_display.display.CoverageDisplayHelper;
 import cc.takacs.php_codeverage_display.display.CoverageDisplay;
-import cc.takacs.php_codeverage_display.display.FilenameDisplayMap;
-import cc.takacs.php_codeverage_display.display.SimpleFilenameDisplayMap;
+import cc.takacs.php_codeverage_display.displaymap.CanonicalDisplayMapDecorator;
+import cc.takacs.php_codeverage_display.displaymap.FilenameDisplayMap;
+import cc.takacs.php_codeverage_display.displaymap.SimpleFilenameDisplayMap;
 import junit.framework.TestCase;
 import org.junit.Before;
 import org.junit.Test;

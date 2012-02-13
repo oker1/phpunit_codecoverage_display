@@ -1,11 +1,14 @@
-package cc.takacs.php_codeverage_display.display;
+package cc.takacs.php_codeverage_display.displaymap;
+
+import cc.takacs.php_codeverage_display.display.CoverageDisplay;
 
 import java.util.HashMap;
 
 /**
  * @author Zsolt Takacs <zsolt@takacs.cc>
  */
-public class SimpleFilenameDisplayMap implements FilenameDisplayMap {
+public class SimpleFilenameDisplayMap implements FilenameDisplayMap
+{
     private HashMap<String, CoverageDisplay> map;
 
     public SimpleFilenameDisplayMap() {

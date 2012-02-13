@@ -1,4 +1,6 @@
-package cc.takacs.php_codeverage_display.display;
+package cc.takacs.php_codeverage_display.displaymap;
+
+import cc.takacs.php_codeverage_display.display.CoverageDisplay;
 
 import java.io.File;
 import java.io.IOException;

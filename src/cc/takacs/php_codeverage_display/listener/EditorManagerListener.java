@@ -2,7 +2,11 @@ package cc.takacs.php_codeverage_display.listener;
 
 import cc.takacs.php_codeverage_display.display.DisplayHandler;
 import com.intellij.openapi.editor.Editor;
-import com.intellij.openapi.fileEditor.*;
+import com.intellij.openapi.fileEditor.FileEditor;
+import com.intellij.openapi.fileEditor.FileEditorManager;
+import com.intellij.openapi.fileEditor.FileEditorManagerEvent;
+import com.intellij.openapi.fileEditor.FileEditorManagerListener;
+import com.intellij.openapi.fileEditor.TextEditor;
 import com.intellij.openapi.vfs.VirtualFile;
 
 /**

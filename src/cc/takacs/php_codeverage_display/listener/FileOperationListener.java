@@ -1,7 +1,11 @@
 package cc.takacs.php_codeverage_display.listener;
 
 import cc.takacs.php_codeverage_display.display.DisplayHandler;
-import com.intellij.openapi.vfs.*;
+import com.intellij.openapi.vfs.VirtualFileCopyEvent;
+import com.intellij.openapi.vfs.VirtualFileEvent;
+import com.intellij.openapi.vfs.VirtualFileListener;
+import com.intellij.openapi.vfs.VirtualFileMoveEvent;
+import com.intellij.openapi.vfs.VirtualFilePropertyEvent;
 
 import java.io.File;
 
