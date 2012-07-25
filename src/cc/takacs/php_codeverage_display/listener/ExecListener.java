@@ -25,7 +25,16 @@ public class ExecListener implements ExecutionListener {
 
     private boolean isPHPUnitRun(RunProfile runProfile) {
         // hack to determine if process was a phpunit run
-        return runProfile.getClass().toString().startsWith("class com.jetbrains.php.run.phpunit.");
+        final String className = runProfile.getClass().toString();
+        return isPhpStorm3PhpunitRun(className) || isPhpStorm4PhpunitRun(className);
+    }
+
+    private boolean isPhpStorm4PhpunitRun(String className) {
+        return className.startsWith("class com.jetbrains.php.phpunit.");
+    }
+
+    private boolean isPhpStorm3PhpunitRun(String className) {
+        return className.startsWith("class com.jetbrains.php.run.phpunit.");
     }
 
     public void processStartScheduled(String s, ExecutionEnvironment executionEnvironment) {

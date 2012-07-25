@@ -1,7 +1,7 @@
 <idea-plugin version="2" url="https://github.com/oker1/phpunit_codecoverage_display">
     <name>PHPUnit code coverage</name>
     <description>Displays PHPUnit code coverage of file in the editor.</description>
-    <version>0.2.1</version>
+    <version>0.2.2</version>
     <vendor email="zsolt@takacs.cc" url="https://github.com/oker1/phpunit_codecoverage_display">Zsolt Takacs</vendor>
     <idea-version since-build="107.120"/>
 
@@ -9,9 +9,9 @@
         <![CDATA[
 <html>
 <h2>Changelog:</h2>
-<h3>v0.2.1</h3>
+<h3>v0.2.2</h3>
 <ul>
-<li>Fix file paths when running on windows without path mapping</li>
+<li>PhpStorm 4 compatibility fix</li>
 </ul>
 </html>
         ]]>

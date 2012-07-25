@@ -5,6 +5,12 @@ License: GPLv3
 
 ## Changelog:
 
+### v0.2.2
+ * PhpStorm 4 compatibility fix
+
+### v0.2.1
+ * Fix file paths when running on windows without path mapping
+
 ### v0.2.0
  * path mapping to enable shared folder + ssh workflow (#10)
  * fix bug with coverage data on first line of php file (#11)
