@@ -1,5 +1,7 @@
 # PHPUnit code coverage plugin for PhpStorm
 
+[![Build Status](https://secure.travis-ci.org/oker1/phpunit_codecoverage_display.png?branch=master)](http://travis-ci.org/oker1/phpunit_codecoverage_display)
+
 Simple plugin to display PHPUnit coverage from clover xml.
 License: GPLv3
 
