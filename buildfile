@@ -11,7 +11,7 @@ repositories.remote << "http://repo1.maven.org/maven2"
 
 phpstorm_url = "http://download.jetbrains.com/webide/PhpStorm-EAP-121.12.zip"
 phpstorm = artifact("phpstorm:phpstorm:zip:phpstorm:121.12")
-download(phpstorm => phpstorm_url)
+download(phpstorm => phpstorm_url).invoke
 zip = Unzip.new('lib_phpstorm' => phpstorm).from_path('lib').root.extract
 
 my_layout = Layout.new
