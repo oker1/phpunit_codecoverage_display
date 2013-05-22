@@ -20,7 +20,11 @@ public class FileOperationListener implements VirtualFileListener {
     }
 
     public void beforePropertyChange(VirtualFilePropertyEvent event) {
-        if (event.getPropertyName().equals("name")) {
+        if (
+            event.getPropertyName().equals("name") &&
+            event.getFile().getParent() != null
+
+        ) {
             String newPath = event.getFile().getParent().getPath() + File.separator + event.getNewValue();
             displayHandler.reassignDisplay(event.getFile().getPath(), newPath);
         }

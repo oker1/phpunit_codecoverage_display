@@ -8,3 +8,4 @@ coverage.i*
 lib_phpstorm
 reports
 target
+*.iml
