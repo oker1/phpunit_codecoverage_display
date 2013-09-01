@@ -1,7 +1,7 @@
 <idea-plugin version="2" url="https://github.com/oker1/phpunit_codecoverage_display">
     <name>PHPUnit code coverage</name>
     <description>Displays PHPUnit code coverage of file in the editor.</description>
-    <version>0.2.3</version>
+    <version>0.3.0</version>
     <vendor email="zsolt@takacs.cc" url="https://github.com/oker1/phpunit_codecoverage_display">Zsolt Takacs</vendor>
     <idea-version since-build="107.120"/>
 
@@ -9,6 +9,11 @@
         <![CDATA[
 <html>
 <h2>Changelog:</h2>
+<h3>v0.3.0</h3>
+<ul>
+<li>Fixed issue #13 and #16. You may now toggle this highligt on and off. The plugin listens to the most recent
+coverage report. It is either the one you specified or a report in the PhpStrom coverage suite.</li>
+</ul>
 <h3>v0.2.3</h3>
 <ul>
 <li>#15 fix possible nullpointer in FileOperationListener</li>

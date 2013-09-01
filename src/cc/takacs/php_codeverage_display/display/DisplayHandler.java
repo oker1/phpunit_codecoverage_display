@@ -84,7 +84,10 @@ public class DisplayHandler {
 
     private String getCloverXmlPath() {
         String configPath=configValues.getCloverXmlPath();
-        File xmlFile = findXmlFromCache();
+        File xmlFile = null;
+        if(configValues.useCoverageSuite){
+            xmlFile = findXmlFromCache();
+        }
 
         if(configPath!=null){
             File configFile = new File(configPath);
@@ -99,6 +102,7 @@ public class DisplayHandler {
             return null;
         }
 
+        System.out.println("Using: "+xmlFile.getAbsolutePath());
         return xmlFile.getAbsolutePath();
     }
 

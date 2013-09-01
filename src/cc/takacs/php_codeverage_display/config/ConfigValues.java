@@ -24,6 +24,10 @@ public class ConfigValues {
     //boolean to indicate if highlightning should be enabled or not
     public boolean enabled = true;
 
+    //Should we use the php storm coverage suite?
+    public boolean useCoverageSuite = true;
+
+
     public void loadFromInstance(ConfigValues values) {
         cloverXmlPath = values.cloverXmlPath;
         coveredR = values.coveredR;

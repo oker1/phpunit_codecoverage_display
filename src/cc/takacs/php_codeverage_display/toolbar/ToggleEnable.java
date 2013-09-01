@@ -20,7 +20,7 @@ public class ToggleEnable extends AnAction {
         //toggle
         config.enabled=!config.isEnabled();
 
-        //System.out.println("Config.enabled="+(config.isEnabled()?"True":"False"));
+        System.out.println("Config.enabled="+(config.isEnabled()?"True":"False"));
 
         PluginConfiguration.getDisplayHandler().updateDisplays();
     }
