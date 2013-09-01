@@ -15,8 +15,8 @@ import javax.swing.*;
 @State(name = "PHPUnitCoveragePlugin", storages = {@com.intellij.openapi.components.Storage(id = "config", file = "$WORKSPACE_FILE$")})
 public class PluginConfiguration implements Configurable, PersistentStateComponent<ConfigValues> {
     private ConfigPanel configPanel;
-    private DisplayHandler displayHandler;
-    private ConfigValues configValues;
+    private static DisplayHandler displayHandler;
+    private static ConfigValues configValues;
 
     public PluginConfiguration(DisplayHandler displayHandler, ConfigValues configValues) {
         this.configValues = configValues;
@@ -92,5 +92,13 @@ public class PluginConfiguration implements Configurable, PersistentStateCompone
 
     public String getHelpTopic() {
         return null;
+    }
+
+    public static ConfigValues getConfigValues() {
+        return configValues;
+    }
+
+    public static DisplayHandler getDisplayHandler() {
+        return displayHandler;
     }
 }
