@@ -18,6 +18,7 @@ import com.intellij.openapi.vfs.VirtualFile;
 import org.apache.commons.lang.SystemUtils;
 
 import javax.swing.*;
+import java.io.File;
 
 /**
  * @author Zsolt Takacs <zsolt@takacs.cc>
@@ -82,7 +83,45 @@ public class DisplayHandler {
     }
 
     private String getCloverXmlPath() {
-        return configValues.getCloverXmlPath();
+        String configPath=configValues.getCloverXmlPath();
+        File xmlFile = findXmlFromCache();
+
+        if(configPath!=null){
+            File configFile = new File(configPath);
+
+            //use the last modified file
+            if (xmlFile == null || xmlFile.lastModified() < configFile.lastModified()) {
+                xmlFile=configFile;
+            }
+        }
+
+        if(xmlFile == null){
+            return null;
+        }
+
+        return xmlFile.getAbsolutePath();
+    }
+
+    /**
+     * Get last modified coverage file from cache
+     * @return File
+     */
+    private File findXmlFromCache(){
+        File dir = new File(System.getProperty("idea.system.path")+"/coverage/");
+
+        File[] files = dir.listFiles();
+        if (files==null || files.length == 0) {
+            return null;
+        }
+
+        File lastModifiedFile = files[0];
+        for (int i = 1; i < files.length; i++) {
+            if (lastModifiedFile.lastModified() < files[i].lastModified()) {
+                lastModifiedFile = files[i];
+            }
+        }
+
+        return lastModifiedFile;
     }
 
     public void addDisplayForEditor(Editor editor, String file) {
