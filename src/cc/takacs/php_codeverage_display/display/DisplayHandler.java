@@ -102,7 +102,7 @@ public class DisplayHandler {
             return null;
         }
 
-        System.out.println("Using: "+xmlFile.getAbsolutePath());
+        //System.out.println("Using: "+xmlFile.getAbsolutePath());
         return xmlFile.getAbsolutePath();
     }
 
