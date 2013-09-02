@@ -82,6 +82,11 @@ public class DisplayHandler {
         }
     }
 
+    /**
+     * Get the proper path to a clover report
+     *
+     * @return String
+     */
     private String getCloverXmlPath() {
         String configPath=configValues.getCloverXmlPath();
         File xmlFile = null;
@@ -92,9 +97,13 @@ public class DisplayHandler {
         if(configPath!=null){
             File configFile = new File(configPath);
 
-            //use the last modified file
-            if (xmlFile == null || xmlFile.lastModified() < configFile.lastModified()) {
-                xmlFile=configFile;
+            //if file exists
+            if(configFile.exists()){
+
+                //use the last modified file
+                if (xmlFile == null || xmlFile.lastModified() < configFile.lastModified()) {
+                    xmlFile=configFile;
+                }
             }
         }
 
@@ -102,7 +111,7 @@ public class DisplayHandler {
             return null;
         }
 
-        //System.out.println("Using: "+xmlFile.getAbsolutePath());
+        System.out.println("Updating displays using: "+xmlFile.getAbsolutePath());
         return xmlFile.getAbsolutePath();
     }
 
