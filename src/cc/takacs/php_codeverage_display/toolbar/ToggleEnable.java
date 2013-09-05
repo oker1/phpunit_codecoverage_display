@@ -27,7 +27,7 @@ public class ToggleEnable extends AnAction {
 
         toggleIcon(presentation, config.enabled);
 
-        System.out.println("Config.enabled="+(config.isEnabled()?"True":"False"));
+        //System.out.println("Config.enabled="+(config.isEnabled()?"True":"False"));
 
         pc.getDisplayHandler().updateDisplays();
 
