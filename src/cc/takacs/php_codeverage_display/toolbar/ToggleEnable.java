@@ -16,8 +16,11 @@ import java.net.URL;
  */
 public class ToggleEnable extends AnAction {
     public void actionPerformed(AnActionEvent e) {
-        ConfigValues config = new ConfigValues();
         Presentation presentation= e.getPresentation();
+        PluginConfiguration pc= e.getProject()
+                .getComponent(PluginConfiguration.class);
+
+        ConfigValues config = pc.getState();
 
         //toggle
         config.enabled=!config.isEnabled();
@@ -26,10 +29,8 @@ public class ToggleEnable extends AnAction {
 
         System.out.println("Config.enabled="+(config.isEnabled()?"True":"False"));
 
-        PluginConfiguration.getDisplayHandler().updateDisplays();
+        pc.getDisplayHandler().updateDisplays();
 
-
-        //DisplayHandler dh= new DisplayHandler(config, e.getProject());
     }
 
     /**
