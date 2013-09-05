@@ -9,6 +9,9 @@ import cc.takacs.php_codeverage_display.displaymap.FilenameDisplayMap;
 import cc.takacs.php_codeverage_display.displaymap.SimpleFilenameDisplayMap;
 import cc.takacs.php_codeverage_display.displaymap.UnixToWindowsDisplayMapDecorator;
 import cc.takacs.php_codeverage_display.displaymap.WindowsDisplayMapDecorator;
+import com.intellij.notification.Notification;
+import com.intellij.notification.NotificationType;
+import com.intellij.notification.Notifications;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.fileEditor.FileEditor;
 import com.intellij.openapi.fileEditor.FileEditorManager;
@@ -111,7 +114,11 @@ public class DisplayHandler {
             return null;
         }
 
-        //System.out.println("Updating displays using: "+xmlFile.getAbsolutePath());
+        /*Notifications.Bus.notify(new Notification("PHP Code Coverage", "New coverage.xml",
+                xmlFile.getAbsolutePath(),
+                NotificationType.INFORMATION));
+        */
+
         return xmlFile.getAbsolutePath();
     }
 
@@ -120,7 +127,7 @@ public class DisplayHandler {
      * @return File
      */
     private File findXmlFromCache(){
-        File dir = new File(System.getProperty("idea.system.path")+"/coverage/");
+        File dir = new File(getCachePath());
 
         File[] files = dir.listFiles();
         if (files==null || files.length == 0) {
@@ -135,6 +142,24 @@ public class DisplayHandler {
         }
 
         return lastModifiedFile;
+    }
+
+    private String getCachePath(){
+        String separator=System.getProperty("file.separator");
+        String base=System.getProperty("idea.system.path");
+
+        if(base==null){
+            /**
+             * Help! How should I get the proper base path if idea.system.path is null??
+             */
+
+            //if mac...
+            base=System.getProperty("user.home")+separator+"Library"+separator+"Caches"+separator+
+                    System.getProperty("idea.paths.selector");
+        }
+
+        base+=separator+"coverage"+separator;
+        return base;
     }
 
     public void addDisplayForEditor(Editor editor, String file) {
