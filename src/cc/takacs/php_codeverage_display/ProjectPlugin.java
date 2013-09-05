@@ -1,5 +1,7 @@
 package cc.takacs.php_codeverage_display;
 
+import cc.takacs.php_codeverage_display.config.ConfigValues;
+import cc.takacs.php_codeverage_display.config.PluginConfiguration;
 import cc.takacs.php_codeverage_display.display.DisplayHandler;
 import cc.takacs.php_codeverage_display.listener.EditorManagerListener;
 import cc.takacs.php_codeverage_display.listener.ExecListener;
@@ -20,6 +22,13 @@ public class ProjectPlugin {
     public ProjectPlugin(Project project, DisplayHandler displayHandler) {
         this.project = project;
         this.displayHandler = displayHandler;
+
+        PluginConfiguration pc= project.getComponent(PluginConfiguration.class);
+
+        ConfigValues config = pc.getState();
+        //always false when you open your ide
+        config.enabled=false;
+
 
         registerListeners(displayHandler);
     }

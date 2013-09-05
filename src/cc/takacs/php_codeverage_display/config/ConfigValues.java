@@ -22,7 +22,7 @@ public class ConfigValues {
     public String mapDirectoryTo = "";
 
     //boolean to indicate if highlightning should be enabled or not
-    public boolean enabled = true;
+    public boolean enabled = false;
 
     //Should we use the php storm coverage suite?
     public boolean useCoverageSuite = true;
