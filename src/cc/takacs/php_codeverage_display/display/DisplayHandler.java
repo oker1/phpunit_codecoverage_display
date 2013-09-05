@@ -111,7 +111,7 @@ public class DisplayHandler {
             return null;
         }
 
-        System.out.println("Updating displays using: "+xmlFile.getAbsolutePath());
+        //System.out.println("Updating displays using: "+xmlFile.getAbsolutePath());
         return xmlFile.getAbsolutePath();
     }
 
