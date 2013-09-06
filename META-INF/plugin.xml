@@ -11,7 +11,7 @@
 <h2>Changelog:</h2>
 <h3>v0.3.0</h3>
 <ul>
-<li>Fixed issue #13 and #16. You may now toggle this highligt on and off. The plugin listens to the most recent
+<li>Fixed issue #13 and #16. You may now toggle this highlight on and off. The plugin listens to the most recent
 coverage report. It is either the one you specified or a report in the PhpStrom coverage suite.</li>
 </ul>
 <h3>v0.2.3</h3>

@@ -144,6 +144,12 @@ public class DisplayHandler {
         return lastModifiedFile;
     }
 
+    /**
+     * Get the path to the coverage cache folder
+     *
+     *
+     * @return String
+     */
     private String getCachePath(){
         String separator=System.getProperty("file.separator");
         String base=System.getProperty("idea.system.path");

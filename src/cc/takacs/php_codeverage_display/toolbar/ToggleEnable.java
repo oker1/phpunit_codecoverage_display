@@ -12,6 +12,11 @@ import java.net.URL;
 
 
 /**
+ *
+ * This class handles the toolbar icon.
+ *
+ * What to to when it is clicked?
+ *
  * @author Tobias Nyholm
  */
 public class ToggleEnable extends AnAction {

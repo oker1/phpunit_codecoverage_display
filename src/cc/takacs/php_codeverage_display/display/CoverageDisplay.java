@@ -37,6 +37,7 @@ public class CoverageDisplay implements DocumentListener {
     public synchronized void redraw() {
         clear();
 
+        //If the coverage.xml file has any lines AND if highlight is enabled
         if (fileCoverage.hasLines() && configValues.isEnabled()) {
             int firstLineNumber = fileCoverage.getKeys().iterator().next();
             boolean lastLineWasExecuted = fileCoverage.getLine(firstLineNumber).isExecuted();
