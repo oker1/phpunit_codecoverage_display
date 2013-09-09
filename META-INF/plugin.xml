@@ -50,7 +50,7 @@ coverage report. It is either the one you specified or a report in the PhpStrom 
     <actions>
         <action id="cc.takacs.php_codeverage_display.toolbar.enable"
                 class="cc.takacs.php_codeverage_display.toolbar.ToggleEnable" text="Toggle highlight code coverage"
-                icon="/icons/toolbar-toggle-enabled-icon.png">
+                icon="/icons/toolbar-toggle-disabled-icon.png">
             <add-to-group group-id="MainToolBar" anchor="after" relative-to-action="VcsToobarActions"/>
             <keyboard-shortcut keymap="$default" first-keystroke="ctrl meta C"/>
         </action>
