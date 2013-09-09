@@ -114,11 +114,6 @@ public class DisplayHandler {
             return null;
         }
 
-        /*Notifications.Bus.notify(new Notification("PHP Code Coverage", "New coverage.xml",
-                xmlFile.getAbsolutePath(),
-                NotificationType.INFORMATION));
-        */
-
         return xmlFile.getAbsolutePath();
     }
 
@@ -155,13 +150,17 @@ public class DisplayHandler {
         String base=System.getProperty("idea.system.path");
 
         if(base==null){
-            /**
-             * Help! How should I get the proper base path if idea.system.path is null??
-             */
+            base=System.getProperty("user.home");
 
             //if mac...
-            base=System.getProperty("user.home")+separator+"Library"+separator+"Caches"+separator+
+            if(System.getProperty("os.name").equals("Mac OS X")){
+                base+=separator+"Library"+separator+"Caches"+separator+
                     System.getProperty("idea.paths.selector");
+            }
+            else{//if windows or linux
+                base+=separator+"."+System.getProperty("idea.paths.selector")+separator+"system";
+            }
+
         }
 
         base+=separator+"coverage"+separator;

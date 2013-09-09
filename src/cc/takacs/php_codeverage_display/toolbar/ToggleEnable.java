@@ -31,11 +31,7 @@ public class ToggleEnable extends AnAction {
         config.enabled=!config.isEnabled();
 
         toggleIcon(presentation, config.enabled);
-
-        //System.out.println("Config.enabled="+(config.isEnabled()?"True":"False"));
-
         pc.getDisplayHandler().updateDisplays();
-
     }
 
     /**
@@ -47,10 +43,10 @@ public class ToggleEnable extends AnAction {
     private void toggleIcon(Presentation presentation, Boolean enabled){
         String location;
         if(enabled){
-            location = "/icons/toolbar-toggle-disabled-icon.png";
+            location = "/icons/toolbar-toggle-enabled-icon.png";
         }
         else{
-            location = "/icons/toolbar-toggle-enabled-icon.png";
+            location = "/icons/toolbar-toggle-disabled-icon.png";
         }
         URL url=getClass().getResource(location);
         presentation.setIcon(new ImageIcon(url));

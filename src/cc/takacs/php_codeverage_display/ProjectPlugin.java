@@ -23,13 +23,6 @@ public class ProjectPlugin {
         this.project = project;
         this.displayHandler = displayHandler;
 
-        PluginConfiguration pc= project.getComponent(PluginConfiguration.class);
-
-        ConfigValues config = pc.getState();
-        //always false when you open your ide
-        config.enabled=false;
-
-
         registerListeners(displayHandler);
     }
 
