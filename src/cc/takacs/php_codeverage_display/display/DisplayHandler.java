@@ -170,6 +170,9 @@ public class DisplayHandler {
         editor.getDocument().addDocumentListener(display);
 
         this.map.add(file, display);
+
+        //update the display each time a file is opened
+        this.updateDisplays();
     }
 
     public void removeDisplayForFile(String file) {
