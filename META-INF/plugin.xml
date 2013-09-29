@@ -25,6 +25,10 @@ coverage report. It is either the one you specified or a report in the PhpStrom 
     <depends>com.intellij.modules.platform</depends>
 
     <application-components>
+        <component>
+            <implementation-class>cc.takacs.php_codeverage_display.ApplicationPlugin</implementation-class>
+            <interface-class>cc.takacs.php_codeverage_display.ApplicationPlugin</interface-class>
+        </component>
     </application-components>
 
     <project-components>

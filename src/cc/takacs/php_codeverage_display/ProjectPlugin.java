@@ -33,8 +33,6 @@ public class ProjectPlugin {
         registerListeners(displayHandler);
 
         //Make sure to update the tool bar icon
-        AnAction toolbarButton = ActionManager.getInstance().getAction("cc.takacs.php_codeverage_display.toolbar.enable");
-        new ToggleIconService().toggleIcon(toolbarButton.getTemplatePresentation(), config.enabled);
     }
 
     private void registerListeners(DisplayHandler displayHandler) {

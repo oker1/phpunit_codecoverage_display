@@ -1,5 +1,6 @@
 package cc.takacs.php_codeverage_display.config;
 
+import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.util.xmlb.annotations.Transient;
 
 import java.awt.*;
@@ -8,6 +9,7 @@ import java.awt.*;
  * @author Zsolt Takacs <zsolt@takacs.cc>
  */
 public class ConfigValues {
+    public static final String CONFIG_ENABLED = "cc.takacs.php_codeverage_display.enabled";
     public String cloverXmlPath = "";
     public int coveredR = 0;
     public int coveredG = 255;
@@ -20,9 +22,6 @@ public class ConfigValues {
     public boolean directoryMapping = false;
     public String mapDirectoryFrom = "";
     public String mapDirectoryTo = "";
-
-    //boolean to indicate if highlightning should be enabled or not
-    public boolean enabled = true;
 
     //Should we use the php storm coverage suite?
     public boolean useCoverageSuite = true;
@@ -42,7 +41,6 @@ public class ConfigValues {
         mapDirectoryFrom = values.mapDirectoryFrom;
         mapDirectoryTo = values.mapDirectoryTo;
         useCoverageSuite = values.useCoverageSuite;
-        enabled = values.enabled;
     }
 
     public void setCloverXmlPath(String cloverXmlPath) {
@@ -81,7 +79,8 @@ public class ConfigValues {
      *
      * @return boolean
      */
-    public boolean isEnabled(){
-        return this.enabled;
+    public static boolean isEnabled() {
+        final PropertiesComponent propertiesComponent = PropertiesComponent.getInstance();
+        return propertiesComponent.getBoolean(ConfigValues.CONFIG_ENABLED, true);
     }
 }

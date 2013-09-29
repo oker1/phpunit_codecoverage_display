@@ -38,7 +38,7 @@ public class CoverageDisplay implements DocumentListener {
         clear();
 
         //If the coverage.xml file has any lines AND if highlight is enabled
-        if (fileCoverage.hasLines() && configValues.isEnabled()) {
+        if (fileCoverage.hasLines() && ConfigValues.isEnabled()) {
             int firstLineNumber = fileCoverage.getKeys().iterator().next();
             boolean lastLineWasExecuted = fileCoverage.getLine(firstLineNumber).isExecuted();
             int lastDifferentLine = firstLineNumber;
