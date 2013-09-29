@@ -18,6 +18,7 @@ import com.intellij.openapi.vfs.VirtualFile;
 import org.apache.commons.lang.SystemUtils;
 
 import javax.swing.*;
+import java.io.File;
 
 /**
  * @author Zsolt Takacs <zsolt@takacs.cc>
@@ -81,8 +82,86 @@ public class DisplayHandler {
         }
     }
 
+    /**
+     * Get the proper path to a clover report
+     *
+     * @return String
+     */
     private String getCloverXmlPath() {
-        return configValues.getCloverXmlPath();
+        String configPath=configValues.getCloverXmlPath();
+        File xmlFile = null;
+        if(configValues.useCoverageSuite){
+            xmlFile = findXmlFromCache();
+        }
+
+        if(configPath!=null){
+            File configFile = new File(configPath);
+
+            //if file exists
+            if(configFile.exists()){
+
+                //use the last modified file
+                if (xmlFile == null || xmlFile.lastModified() < configFile.lastModified()) {
+                    xmlFile=configFile;
+                }
+            }
+        }
+
+        if(xmlFile == null){
+            return null;
+        }
+
+        return xmlFile.getAbsolutePath();
+    }
+
+    /**
+     * Get last modified coverage file from cache
+     * @return File
+     */
+    private File findXmlFromCache(){
+        File dir = new File(getCachePath());
+
+        File[] files = dir.listFiles();
+        if (files==null || files.length == 0) {
+            return null;
+        }
+
+        File lastModifiedFile = files[0];
+        for (int i = 1; i < files.length; i++) {
+            if (lastModifiedFile.lastModified() < files[i].lastModified()) {
+                lastModifiedFile = files[i];
+            }
+        }
+
+        return lastModifiedFile;
+    }
+
+    /**
+     * Get the path to the coverage cache folder
+     *
+     *
+     * @return String
+     */
+    private String getCachePath(){
+        String separator=System.getProperty("file.separator");
+        String base=System.getProperty("idea.system.path");
+
+        if(base==null){
+            base=System.getProperty("user.home");
+
+            //if mac...
+            if(System.getProperty("os.name").equals("Mac OS X")){
+                base+=separator+"Library"+separator+"Caches"+separator+
+                    System.getProperty("idea.paths.selector");
+            }
+            else{//if windows or linux
+                base+=separator+"."+System.getProperty("idea.paths.selector")+separator+"system";
+            }
+
+        }
+
+        base+=separator+"coverage"+separator;
+        return base;
     }
 
     public void addDisplayForEditor(Editor editor, String file) {
@@ -91,6 +170,9 @@ public class DisplayHandler {
         editor.getDocument().addDocumentListener(display);
 
         this.map.add(file, display);
+
+        //update the display each time a file is opened
+        this.updateDisplays();
     }
 
     public void removeDisplayForFile(String file) {

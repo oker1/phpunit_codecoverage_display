@@ -27,6 +27,7 @@ public class ConfigPanel {
     public JTextField localDir;
     public JButton browseLocalDir;
     public JCheckBox dirTranslation;
+    public JCheckBox useCoverageSuite;
 
     public ConfigPanel() {
         browseCloverXmlButton.addActionListener(

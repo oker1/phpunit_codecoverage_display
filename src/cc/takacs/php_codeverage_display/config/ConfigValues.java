@@ -21,6 +21,13 @@ public class ConfigValues {
     public String mapDirectoryFrom = "";
     public String mapDirectoryTo = "";
 
+    //boolean to indicate if highlightning should be enabled or not
+    public boolean enabled = true;
+
+    //Should we use the php storm coverage suite?
+    public boolean useCoverageSuite = true;
+
+
     public void loadFromInstance(ConfigValues values) {
         cloverXmlPath = values.cloverXmlPath;
         coveredR = values.coveredR;
@@ -34,6 +41,8 @@ public class ConfigValues {
         directoryMapping = values.directoryMapping;
         mapDirectoryFrom = values.mapDirectoryFrom;
         mapDirectoryTo = values.mapDirectoryTo;
+        useCoverageSuite = values.useCoverageSuite;
+        enabled = values.enabled;
     }
 
     public void setCloverXmlPath(String cloverXmlPath) {
@@ -65,5 +74,14 @@ public class ConfigValues {
         uncoveredR = color.getRed();
         uncoveredG = color.getGreen();
         uncoveredB = color.getBlue();
+    }
+
+    /**
+     * If we should highlight lines
+     *
+     * @return boolean
+     */
+    public boolean isEnabled(){
+        return this.enabled;
     }
 }

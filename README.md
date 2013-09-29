@@ -7,6 +7,10 @@ License: GPLv3
 
 ## Changelog:
 
+### v0.3.0
+ * Fixed issue #13 and #16. You may now toggle this highlight on and off. The plugin listens to the most recent
+   coverage report. It is either the one you specified or a report in the PhpStrom coverage suite.
+
 ### v0.2.2
  * PhpStorm 4 compatibility fix
 
