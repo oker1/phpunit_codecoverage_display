@@ -49,6 +49,7 @@ public class PluginConfiguration implements Configurable, PersistentStateCompone
                         !configValues.getUncoveredColor().equals(configPanel.uncoveredColor.getBackground()) ||
                         configValues.highlightLines != configPanel.lineCheckBox.isSelected() ||
                         configValues.highlightSides != configPanel.sideCheckBox.isSelected() ||
+                        configValues.highlightErrors != configPanel.errorCheckBox.isSelected() ||
                         configValues.useCoverageSuite != configPanel.useCoverageSuite.isSelected() ||
                         configValues.directoryMapping != configPanel.dirTranslation.isSelected() ||
                         !configValues.mapDirectoryFrom.equals(configPanel.localDir.getText()) ||
@@ -61,6 +62,7 @@ public class PluginConfiguration implements Configurable, PersistentStateCompone
         configValues.setUncoveredColor(configPanel.uncoveredColor.getBackground());
         configValues.highlightLines = configPanel.lineCheckBox.isSelected();
         configValues.highlightSides = configPanel.sideCheckBox.isSelected();
+        configValues.highlightErrors = configPanel.errorCheckBox.isSelected();
         configValues.useCoverageSuite = configPanel.useCoverageSuite.isSelected();
         configValues.directoryMapping = configPanel.dirTranslation.isSelected();
         configValues.mapDirectoryFrom = configPanel.localDir.getText();
@@ -76,6 +78,7 @@ public class PluginConfiguration implements Configurable, PersistentStateCompone
         configPanel.uncoveredColor.setBackground(configValues.getUncoveredColor());
         configPanel.sideCheckBox.setSelected(configValues.highlightSides);
         configPanel.lineCheckBox.setSelected(configValues.highlightLines);
+        configPanel.errorCheckBox.setSelected(configValues.highlightErrors);
         configPanel.useCoverageSuite.setSelected(configValues.useCoverageSuite);
         configPanel.dirTranslation.setSelected(configValues.directoryMapping);
         configPanel.localDir.setText(configValues.mapDirectoryFrom);
