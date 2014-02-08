@@ -45,7 +45,9 @@ public class CoverageHighlighter {
                 sideHighlighter.highlight(highlighter, attributes, color, executed);
             }
 
-            errorStripeMarkHighlighter.highlight(highlighter, attributes, color, executed);
+            if (configValues.highlightErrors) {
+                errorStripeMarkHighlighter.highlight(highlighter, attributes, color, executed);
+            }
 
             highlights.add(highlighter);
         }

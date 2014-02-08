@@ -19,6 +19,7 @@ public class ConfigValues {
     public int uncoveredB = 0;
     public boolean highlightSides = false;
     public boolean highlightLines = true;
+    public boolean highlightErrors = false;
     public boolean directoryMapping = false;
     public String mapDirectoryFrom = "";
     public String mapDirectoryTo = "";
@@ -37,6 +38,7 @@ public class ConfigValues {
         uncoveredB = values.uncoveredB;
         highlightSides = values.highlightSides;
         highlightLines = values.highlightLines;
+        highlightErrors = values.highlightErrors;
         directoryMapping = values.directoryMapping;
         mapDirectoryFrom = values.mapDirectoryFrom;
         mapDirectoryTo = values.mapDirectoryTo;

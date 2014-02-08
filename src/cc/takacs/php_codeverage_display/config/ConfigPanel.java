@@ -28,6 +28,9 @@ public class ConfigPanel {
     public JButton browseLocalDir;
     public JCheckBox dirTranslation;
     public JCheckBox useCoverageSuite;
+    // checkbox used to enable & disable error highlighting
+    // which usually looks like errors
+    public JCheckBox errorCheckBox;
 
     public ConfigPanel() {
         browseCloverXmlButton.addActionListener(
@@ -88,7 +91,7 @@ public class ConfigPanel {
         }
 
         public void actionPerformed(ActionEvent actionEvent) {
-            VirtualFile[] files = FileChooser.chooseFiles(panel, descriptor);
+            VirtualFile[] files = FileChooser.chooseFiles(descriptor, null, null);
 
             if (files.length > 0) {
                 field.setText(files[0].getPath());
