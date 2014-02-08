@@ -10,10 +10,11 @@
 <html>
 <h2>Changelog:</h2>
 
-<h3>v0.3.1</h3>
+<h3>v0.4.0</h3>
 <ul>
     <li>Now you have 3 options on how to highlight covered/uncovered lines. Added new 'Error' checkbox in plugin settings.
     </li>
+    <li>Fix for #19</li>
 </ul>
 
 <h3>v0.3.0</h3>
