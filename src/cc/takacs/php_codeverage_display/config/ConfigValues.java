@@ -14,9 +14,11 @@ public class ConfigValues {
     public int coveredR = 0;
     public int coveredG = 255;
     public int coveredB = 0;
+    public int coveredA = 255; // opaque by default
     public int uncoveredR = 255;
     public int uncoveredG = 0;
     public int uncoveredB = 0;
+    public int uncoveredA = 255; // opaque by default
     public boolean highlightSides = false;
     public boolean highlightLines = true;
     public boolean highlightErrors = false;
@@ -33,9 +35,11 @@ public class ConfigValues {
         coveredR = values.coveredR;
         coveredG = values.coveredG;
         coveredB = values.coveredB;
+        coveredA = values.coveredA;
         uncoveredR = values.uncoveredR;
         uncoveredG = values.uncoveredG;
         uncoveredB = values.uncoveredB;
+        uncoveredA = values.uncoveredA;
         highlightSides = values.highlightSides;
         highlightLines = values.highlightLines;
         highlightErrors = values.highlightErrors;
@@ -56,24 +60,26 @@ public class ConfigValues {
 
     @Transient
     public Color getCoveredColor() {
-        return new Color(coveredR, coveredG, coveredB);
+        return new Color(coveredR, coveredG, coveredB, coveredA);
     }
 
     public void setCoveredColor(Color color) {
         coveredR = color.getRed();
         coveredG = color.getGreen();
         coveredB = color.getBlue();
+        coveredA = color.getAlpha();
     }
 
     @Transient
     public Color getUncoveredColor() {
-        return new Color(uncoveredR, uncoveredG, uncoveredB);
+        return new Color(uncoveredR, uncoveredG, uncoveredB, uncoveredA);
     }
 
     public void setUncoveredColor(Color color) {
         uncoveredR = color.getRed();
         uncoveredG = color.getGreen();
         uncoveredB = color.getBlue();
+        uncoveredA = color.getAlpha();
     }
 
     /**
