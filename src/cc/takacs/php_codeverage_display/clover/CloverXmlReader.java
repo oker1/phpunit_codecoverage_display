@@ -5,6 +5,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
 import javax.xml.parsers.DocumentBuilderFactory;
+import java.io.File;
 import java.io.FileInputStream;
 
 /**
@@ -30,6 +31,15 @@ public class CloverXmlReader {
                     Element element = (Element) nodes.item(i);
 
                     String coveredFilename = element.getAttribute("name");
+                    if (element.hasAttribute("path")) {
+                        String coveredPath = element.getAttribute("path");
+                        if (coveredPath.endsWith(coveredFilename)) {
+                            coveredFilename = coveredPath;
+                        } else {
+                            if (!coveredPath.endsWith(File.pathSeparator)) coveredPath += File.pathSeparator;
+                            coveredFilename = coveredPath + coveredFilename;
+                        }
+                    }
 
                     FileCoverage fileCoverage = new FileCoverage();
 
