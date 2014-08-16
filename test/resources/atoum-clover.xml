@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1407360405" clover="53e29d9514264">
+  <project timestamp="1407360405" name="atoum code coverage">
+    <package name="atoumCodeCoverage">
+      <file name="BaseEntityWithFileManager.php" path="/home/jdecool/Workspace/NovawayFileManagementBundle/Manager/BaseEntityWithFileManager.php">
+        <line num="55" type="stmt" complexity="0" count="1" falsecount="0" truecount="0" signature="" testduration="0" testsuccess="0"/>
+        <line num="56" type="stmt" complexity="0" count="1" falsecount="0" truecount="0" signature="" testduration="0" testsuccess="0"/>
+        <line num="59" type="stmt" complexity="0" count="1" falsecount="0" truecount="0" signature="" testduration="0" testsuccess="0"/>
+        <line num="60" type="stmt" complexity="0" count="1" falsecount="0" truecount="0" signature="" testduration="0" testsuccess="0"/>
+        <line num="62" type="stmt" complexity="0" count="1" falsecount="0" truecount="0" signature="" testduration="0" testsuccess="0"/>
+        <line num="63" type="stmt" complexity="0" count="1" falsecount="0" truecount="0" signature="" testduration="0" testsuccess="0"/>
+        <line num="64" type="stmt" complexity="0" count="0" falsecount="0" truecount="0" signature="" testduration="0" testsuccess="0"/>
+        <line num="65" type="stmt" complexity="0" count="1" falsecount="0" truecount="0" signature="" testduration="0" testsuccess="0"/>
+        <line num="66" type="stmt" complexity="0" count="1" falsecount="0" truecount="0" signature="" testduration="0" testsuccess="0"/>
+        <line num="67" type="stmt" complexity="0" count="1" falsecount="0" truecount="0" signature="" testduration="0" testsuccess="0"/>
+        <class name="BaseEntityWithFileManager">
+          <metrics complexity="0" elements="176" coveredelements="165" conditionals="0" coveredconditionals="0" statements="176" coveredstatements="165" methods="16" coveredmethods="16" testduration="0" testfailures="0" testpasses="0" testruns="0"/>
+        </class>
+        <metrics complexity="0" elements="176" coveredelements="165" conditionals="0" coveredconditionals="0" statements="176" coveredstatements="165" methods="16" coveredmethods="3" testduration="0" testfailures="0" testpasses="0" testruns="0" classes="1" loc="176" ncloc="176"/>
+      </file>
+      <file name="Extension.php" path="/home/jdecool/Workspace/NovawayFileManagementBundle/vendor/twig/twig/lib/Twig/Extension.php">
+        <line num="22" type="stmt" complexity="0" count="0" falsecount="0" truecount="0" signature="" testduration="0" testsuccess="0"/>
+        <line num="31" type="stmt" complexity="0" count="0" falsecount="0" truecount="0" signature="" testduration="0" testsuccess="0"/>
+        <line num="41" type="stmt" complexity="0" count="0" falsecount="0" truecount="0" signature="" testduration="0" testsuccess="0"/>
+        <line num="61" type="stmt" complexity="0" count="0" falsecount="0" truecount="0" signature="" testduration="0" testsuccess="0"/>
+        <line num="71" type="stmt" complexity="0" count="0" falsecount="0" truecount="0" signature="" testduration="0" testsuccess="0"/>
+        <line num="81" type="stmt" complexity="0" count="0" falsecount="0" truecount="0" signature="" testduration="0" testsuccess="0"/>
+        <line num="91" type="stmt" complexity="0" count="0" falsecount="0" truecount="0" signature="" testduration="0" testsuccess="0"/>
+        <class name="Twig_Extension">
+          <metrics complexity="0" elements="7" coveredelements="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="0" methods="7" coveredmethods="7" testduration="0" testfailures="0" testpasses="0" testruns="0"/>
+        </class>
+        <metrics complexity="0" elements="7" coveredelements="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="0" methods="7" coveredmethods="0" testduration="0" testfailures="0" testpasses="0" testruns="0" classes="1" loc="7" ncloc="7"/>
+      </file>
+      <metrics complexity="0" elements="337" coveredelements="293" conditionals="0" coveredconditionals="0" statements="337" coveredstatements="293" methods="38" coveredmethods="10" testduration="0" testfailures="0" testpasses="0" testruns="0" classes="4" loc="337" ncloc="337" files="4"/>
+    </package>
+    <metrics complexity="0" elements="337" coveredelements="293" conditionals="0" coveredconditionals="0" statements="337" coveredstatements="293" methods="38" coveredmethods="10" testduration="0" testfailures="0" testpasses="0" testruns="0" classes="4" loc="337" ncloc="337" files="4" packages="1"/>
+  </project>
+</coverage>

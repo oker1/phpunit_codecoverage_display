@@ -17,6 +17,7 @@ zip = Unzip.new('lib_phpstorm' => phpstorm).from_path('lib').root.extract
 my_layout = Layout.new
 my_layout[:source, :main, :java] = 'src'
 my_layout[:source, :test, :java] = 'test'
+my_layout[:source, :test, :resources] = 'test/resources';
 
 jars = Dir.glob("lib_phpstorm/**/*.jar")
 jars << Dir.glob("lib/**/*.jar")

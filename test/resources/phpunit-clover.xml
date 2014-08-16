@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1408190406">
+  <project timestamp="1408190406">
+    <package name="Symfony\Component\Filesystem\Exception">
+      <file name="/home/jeremy/Workspace/Filesystem/Exception/FileNotFoundException.php">
+        <class name="FileNotFoundException" namespace="Symfony\Component\Filesystem\Exception">
+          <metrics methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="8" elements="9" coveredelements="9"/>
+        </class>
+        <line num="22" type="method" name="__construct" crap="3" count="4"/>
+        <line num="24" type="stmt" count="4"/>
+        <line num="25" type="stmt" count="0"/>
+        <line num="26" type="stmt" count="1"/>
+        <metrics loc="34" ncloc="20" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="8" elements="9" coveredelements="9"/>
+      </file>
+      <file name="/home/jeremy/Workspace/Filesystem/Exception/IOException.php">
+        <class name="IOException" namespace="Symfony\Component\Filesystem\Exception">
+          <metrics methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="6" coveredelements="6"/>
+        </class>
+        <line num="27" type="method" name="__construct" crap="1" count="15"/>
+        <line num="29" type="stmt" count="15"/>
+        <line num="31" type="stmt" count="0"/>
+        <line num="32" type="stmt" count="15"/>
+        <line num="37" type="method" name="getPath" crap="1" count="2"/>
+        <line num="39" type="stmt" count="2"/>
+        <metrics loc="41" ncloc="21" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="6" coveredelements="6"/>
+      </file>
+    </package>
+    <package name="Symfony\Component\Filesystem">
+      <file name="/home/jeremy/Workspace/Filesystem/Filesystem.php">
+        <class name="Filesystem" namespace="Symfony\Component\Filesystem">
+          <metrics methods="15" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="198" coveredstatements="168" elements="213" coveredelements="176"/>
+        </class>
+        <line num="38" type="method" name="copy" crap="10" count="12"/>
+        <line num="40" type="stmt" count="12"/>
+        <line num="41" type="stmt" count="1"/>
+        <line num="44" type="stmt" count="11"/>
+        <line num="46" type="stmt" count="11"/>
+        <line num="47" type="stmt" count="3"/>
+        <line num="48" type="stmt" count="3"/>
+        <line num="49" type="stmt" count="9"/>
+        <line num="52" type="stmt" count="11"/>
+        <line num="54" type="stmt" count="10"/>
+        <metrics loc="481" ncloc="313" classes="1" methods="15" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="198" coveredstatements="168" elements="213" coveredelements="176"/>
+      </file>
+    </package>
+    <metrics files="460" loc="72714" ncloc="44731" classes="612" methods="2706" coveredmethods="53" conditionals="0" coveredconditionals="0" statements="29270" coveredstatements="639" elements="31976" coveredelements="692"/>
+  </project>
+</coverage>
