@@ -52,9 +52,9 @@ public class CoverageDisplay implements DocumentListener {
 
                 if (lineCoverage.isExecuted() != lastLineWasExecuted || lastLineNumber != lineNumber - 1) {
                     if (lastLineWasExecuted) {
-                        this.coverageHighlighter.highlightLines(configValues.getCoveredColor(), lastDifferentLine, lastLineNumber, lastLineExecuted);
+                        this.coverageHighlighter.highlightLines(configValues.getCoveredColorToDraw(), lastDifferentLine, lastLineNumber, lastLineExecuted);
                     } else {
-                        this.coverageHighlighter.highlightLines(configValues.getUncoveredColor(), lastDifferentLine, lastLineNumber, lastLineExecuted);
+                        this.coverageHighlighter.highlightLines(configValues.getUncoveredColorToDraw(), lastDifferentLine, lastLineNumber, lastLineExecuted);
                     }
 
                     lastLineExecuted = lineCoverage.getExecuted();
@@ -66,9 +66,9 @@ public class CoverageDisplay implements DocumentListener {
 
                 if (!iterator.hasNext()) {
                     if (lastLineWasExecuted) {
-                        this.coverageHighlighter.highlightLines(configValues.getCoveredColor(), lastDifferentLine, lastLineNumber, lastLineExecuted);
+                        this.coverageHighlighter.highlightLines(configValues.getCoveredColorToDraw(), lastDifferentLine, lastLineNumber, lastLineExecuted);
                     } else {
-                        this.coverageHighlighter.highlightLines(configValues.getUncoveredColor(), lastDifferentLine, lastLineNumber, lastLineExecuted);
+                        this.coverageHighlighter.highlightLines(configValues.getUncoveredColorToDraw(), lastDifferentLine, lastLineNumber, lastLineExecuted);
                     }
                 }
             }

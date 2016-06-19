@@ -53,7 +53,8 @@ public class PluginConfiguration implements Configurable, PersistentStateCompone
                         configValues.useCoverageSuite != configPanel.useCoverageSuite.isSelected() ||
                         configValues.directoryMapping != configPanel.dirTranslation.isSelected() ||
                         !configValues.mapDirectoryFrom.equals(configPanel.localDir.getText()) ||
-                        !configValues.mapDirectoryTo.equals(configPanel.remoteDir.getText());
+                        !configValues.mapDirectoryTo.equals(configPanel.remoteDir.getText()) ||
+                        configValues.useColorScheme != configPanel.useColorScheme.isSelected();
     }
 
     public void apply() throws ConfigurationException {
@@ -67,6 +68,7 @@ public class PluginConfiguration implements Configurable, PersistentStateCompone
         configValues.directoryMapping = configPanel.dirTranslation.isSelected();
         configValues.mapDirectoryFrom = configPanel.localDir.getText();
         configValues.mapDirectoryTo = configPanel.remoteDir.getText();
+        configValues.useColorScheme = configPanel.useColorScheme.isSelected();
 
         displayHandler.initializeMap();
         displayHandler.updateDisplays();
@@ -87,6 +89,7 @@ public class PluginConfiguration implements Configurable, PersistentStateCompone
         configPanel.localDir.setEnabled(configPanel.dirTranslation.isSelected());
         configPanel.remoteDir.setEnabled(configPanel.dirTranslation.isSelected());
         configPanel.browseLocalDir.setEnabled(configPanel.dirTranslation.isSelected());
+        configPanel.useColorScheme.setSelected(configValues.useColorScheme);
     }
 
     public void disposeUIResources() {

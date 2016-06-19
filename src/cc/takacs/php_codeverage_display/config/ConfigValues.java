@@ -1,6 +1,13 @@
 package cc.takacs.php_codeverage_display.config;
 
 import com.intellij.ide.util.PropertiesComponent;
+import com.intellij.openapi.editor.colors.ColorKey;
+import com.intellij.openapi.editor.colors.EditorColorsManager;
+import com.intellij.openapi.editor.colors.EditorColorsScheme;
+import com.intellij.openapi.editor.colors.TextAttributesKey;
+import com.intellij.openapi.editor.colors.ex.DefaultColorSchemesManager;
+import com.intellij.openapi.editor.colors.impl.DefaultColorsScheme;
+import com.intellij.rt.coverage.data.LineCoverage;
 import com.intellij.util.xmlb.annotations.Transient;
 
 import java.awt.*;
@@ -25,6 +32,7 @@ public class ConfigValues {
     public boolean directoryMapping = false;
     public String mapDirectoryFrom = "";
     public String mapDirectoryTo = "";
+    public boolean useColorScheme = true;
 
     //Should we use the php storm coverage suite?
     public boolean useCoverageSuite = true;
@@ -47,6 +55,7 @@ public class ConfigValues {
         mapDirectoryFrom = values.mapDirectoryFrom;
         mapDirectoryTo = values.mapDirectoryTo;
         useCoverageSuite = values.useCoverageSuite;
+        useColorScheme = values.useColorScheme;
     }
 
     public void setCloverXmlPath(String cloverXmlPath) {
@@ -80,6 +89,28 @@ public class ConfigValues {
         uncoveredG = color.getGreen();
         uncoveredB = color.getBlue();
         uncoveredA = color.getAlpha();
+    }
+
+    @Transient
+    public Color getCoveredColorToDraw() {
+        if (useColorScheme) {
+            EditorColorsScheme scheme = EditorColorsManager.getInstance().getGlobalScheme();
+            return scheme.getAttributes(TextAttributesKey.find("LINE_FULL_COVERAGE")).getForegroundColor();
+
+        } else {
+            return new Color(coveredR, coveredG, coveredB, coveredA);
+        }
+    }
+
+    @Transient
+    public Color getUncoveredColorToDraw() {
+        if (useColorScheme) {
+            EditorColorsScheme scheme = EditorColorsManager.getInstance().getGlobalScheme();
+            return scheme.getAttributes(TextAttributesKey.find("LINE_NONE_COVERAGE")).getForegroundColor();
+
+        } else {
+            return new Color(coveredR, coveredG, coveredB, coveredA);
+        }
     }
 
     /**

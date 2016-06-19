@@ -6,11 +6,10 @@ import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory;
 import com.intellij.openapi.vfs.VirtualFile;
 
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.event.*;
 
 /**
  * @author Zsolt Takacs <zsolt@takacs.cc>
@@ -31,6 +30,11 @@ public class ConfigPanel {
     // checkbox used to enable & disable error highlighting
     // which usually looks like errors
     public JCheckBox errorCheckBox;
+    public JCheckBox useColorScheme;
+    private JLabel coveredColorLabel;
+    private JLabel uncoveredColorLabel;
+    private PickerListener coveredColorListener = new PickerListener(panel, coveredColor);
+    private PickerListener uncoveredColorListener = new PickerListener(panel, uncoveredColor);
 
     public ConfigPanel() {
         browseCloverXmlButton.addActionListener(
@@ -40,8 +44,7 @@ public class ConfigPanel {
                 new BrowseListener(this.localDir, FileChooserDescriptorFactory.createSingleFolderDescriptor())
         );
 
-        coveredColor.addMouseListener(new PickerListener(panel, coveredColor));
-        uncoveredColor.addMouseListener(new PickerListener(panel, uncoveredColor));
+        setColorListeners(true);
         dirTranslation.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent actionEvent) {
                 localDir.setEnabled(dirTranslation.isSelected());
@@ -49,6 +52,25 @@ public class ConfigPanel {
                 browseLocalDir.setEnabled(dirTranslation.isSelected());
             }
         });
+        useColorScheme.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                boolean isNotSelected = e.getStateChange() != ItemEvent.SELECTED;
+                coveredColorLabel.setEnabled(isNotSelected);
+                uncoveredColorLabel.setEnabled(isNotSelected);
+                setColorListeners(isNotSelected);
+            }
+        });
+    }
+
+    private void setColorListeners(boolean enabled) {
+        if (enabled) {
+            coveredColor.addMouseListener(coveredColorListener);
+            uncoveredColor.addMouseListener(uncoveredColorListener);
+        } else {
+            coveredColor.removeMouseListener(coveredColorListener);
+            uncoveredColor.removeMouseListener(uncoveredColorListener);
+        }
     }
 
     private class PickerListener implements MouseListener {
