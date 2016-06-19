@@ -1,7 +1,7 @@
 <idea-plugin version="2" url="https://github.com/oker1/phpunit_codecoverage_display">
     <name>PHPUnit code coverage</name>
     <description>Displays PHPUnit code coverage of file in the editor.</description>
-    <version>0.5.0</version>
+    <version>1.0.0</version>
     <vendor email="zsolt@takacs.cc" url="https://github.com/oker1/phpunit_codecoverage_display">Zsolt Takacs</vendor>
     <idea-version since-build="107.120"/>
 
@@ -9,6 +9,11 @@
         <![CDATA[
 <html>
 <h2>Changelog:</h2>
+
+<h3>v1.0.0</h3>
+<ul>
+    <li>Implemented #18, using color from built-in color scheme (see options for the checkbox)</li>
+</ul>
 
 <h3>v0.5.0</h3>
 <ul>
